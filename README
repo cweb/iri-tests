@@ -1,0 +1,5 @@
+iri-tests
+===============
+
+This repository includes a collection of URI and IRI strings useful for testing
+processing in various user-agents.
