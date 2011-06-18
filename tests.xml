@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<!-- <?xml-stylesheet type="text/xsl" href="urldecomp.xslt" ?> -->
+<!-- Originally from http://greenbytes.de/tech/webdav/urldecomp.xml
+	 and http://greenbytes.de/tech/tc/uris/uris.xml
+	 
+	 TODO:  Incorporate tests from
+	 http://trac.webkit.org/browser/trunk/LayoutTests/fast/url/script-tests
+-->
 <tests>
   <test>
     <id>0001</id>
@@ -26,20 +31,6 @@
       <search>?query</search>
       <hash>#frag</hash>
     </expected>
-  </test>
-  <test>
-    <id>0003</id>
-    <uri>&#32;http://0003.iris.test.ing</uri>
-    <expected>
-      <protocol>http:</protocol>
-      <host>0003.iris.test.ing</host>
-      <hostname>0003.iris.test.ing</hostname>
-      <port></port>
-      <pathname>/</pathname>
-      <search></search>
-      <hash></hash>
-    </expected>
-    <comment>leading whitespace</comment>
   </test>
   <test>
     <id>0004</id>
@@ -82,20 +73,6 @@
       <hash></hash>
     </expected>
     <comment>path contains single %</comment>
-  </test>
-  <test>
-    <id>0007</id>
-    <uri>http://0007.iris.test.ing&#32;</uri>
-    <expected>
-      <protocol>http:</protocol>
-      <host>0007.iris.test.ing</host>
-      <hostname>0007.iris.test.ing</hostname>
-      <port></port>
-      <pathname>/</pathname>
-      <search></search>
-      <hash></hash>
-    </expected>
-    <comment>trailing whitespace</comment>
   </test>
   <test>
     <id>0008</id>
@@ -223,6 +200,7 @@
     </expected>
     <comment>does not parse according to WEBADDRESSES</comment>
   </test>
+  <!-- Test Class: non-HTTP schemes -->
   <test>
     <id>0017</id>
     <uri>data:,A%20brief%20note%25foo#bar</uri>
@@ -293,6 +271,9 @@
     </expected>
     <comment>maybe not hierarchical?</comment>
   </test>
+  <!-- TODO: Test Class: 'file:' handler -->
+  <!-- TODO: Test Class: 'mailto:' -->
+  <!-- Test Class: Query component -->
   <test>
     <id>0022</id>
     <uri>http://0022.iris.test.ing/a-umlaut/?x=ä&#ä#ä</uri>
@@ -307,7 +288,7 @@
     </expected>
     <comment>non-ASCII character in query string and fragment</comment>
   </test>
-  <!-- TODO: Provide the 'expected' results -->
+  <!-- TODO: Continue providing the 'expected' results? -->
   <test>
     <id>0023</id>
     <uri>http://0023.iris.test.ing/b/c/d;p?q</uri>
@@ -372,7 +353,7 @@
     <id>0038</id>
     <uri>http://0038.iris.test.ing/&g#s&#x0002;</uri>
   </test>
-  <!-- Leading and trailing control characters -->
+  <!-- Test Class: Leading and trailing control characters -->
   <test>
     <id>0039</id>
     <uri>&#x0000;&#x0001;&#x0002;&#x0003;http://0039.iris.test.ing/</uri>
@@ -381,9 +362,41 @@
     <id>0040</id>
     <uri>http://0040.&#x0001;.iris.test.ing/&#x0003;g#s&#x0002;</uri>
   </test>
-  <!-- Invalid characters in hostnames -->
+  <!-- Test Class: Leading and trailing whitespace -->
+  <test>
+    <id>0003</id>
+    <uri>&#32;http://0003.iris.test.ing</uri>
+    <expected>
+      <protocol>http:</protocol>
+      <host>0003.iris.test.ing</host>
+      <hostname>0003.iris.test.ing</hostname>
+      <port></port>
+      <pathname>/</pathname>
+      <search></search>
+      <hash></hash>
+    </expected>
+    <comment>leading whitespace</comment>
+  </test>
+  <test>
+    <id>0007</id>
+    <uri>http://0007.iris.test.ing&#32;</uri>
+    <expected>
+      <protocol>http:</protocol>
+      <host>0007.iris.test.ing</host>
+      <hostname>0007.iris.test.ing</hostname>
+      <port></port>
+      <pathname>/</pathname>
+      <search></search>
+      <hash></hash>
+    </expected>
+    <comment>trailing whitespace</comment>
+  </test>
+  <!-- Test Class: Illegal ASCII characters in hostnames -->
   <test>
     <id>0041</id>
     <uri>http://0041.&#x0001;.iris.test.ing/&#x0003;g#s&#x0002;</uri>
   </test>
+  <!-- TODO: Test Class: Illegal Unicode characters in hostnames -->
+  <!-- TODO: Test Class: IDNA2003 -->
+  <!-- TODO: Test Class: IDNA2008 -->
 </tests>
