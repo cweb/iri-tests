@@ -1,0 +1,19 @@
+<?xml version="1.0" standalone="no"?>
+<!-- This testcase shows that WebKit treats that url() as a same-document reference while Gecko and Presto do not. -->
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <base href="http://www.example.com"/>
+  <svg width="100%" height="100%" version="1.1"
+       xmlns="http://www.w3.org/2000/svg">
+
+    <defs>
+      <linearGradient id="orange_red" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" style="stop-color:rgb(255,255,0);
+                                 stop-opacity:1"/>
+        <stop offset="100%" style="stop-color:rgb(255,0,0);
+                                   stop-opacity:1"/>
+      </linearGradient>
+    </defs>
+
+    <rect x="0" y="0" width="100" height="100" style="fill:url(#orange_red)"/>
+  </svg>
+</html>
