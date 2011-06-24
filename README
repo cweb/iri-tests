@@ -38,15 +38,17 @@ There are no command line parameters, simply run the executable:
 
 3) TODOs
 
-a) Expected results are questionable right now and will need more work.
+a) Merge the old tests from tests.xml in to the new iris.xml format.
+
+b) Expected results are questionable right now and will need more work.
 Do not rely on them.
 
-b) miris.xml needs complete
+c) miris.xml needs complete
 
-c) iris.text needs complete - should this use a UTF-8 document encoding?
+d) iris.text needs complete - should this use a UTF-8 document encoding?
 If so it will not be able to store the illegal UTF-8 test cases.
 
-d) BUGS? I've only spot checked the results, more review would be nice.
+e) BUGS? I've only spot checked the results, more review would be nice.
 
 4) Resources
 
