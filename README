@@ -49,8 +49,30 @@ d) iris.text needs complete - should this use a UTF-8 document encoding?
 If so it will not be able to store the illegal UTF-8 test cases.
 
 e) BUGS? I've only spot checked the results, more review would be nice.
+- the orignal byte escapings \xNN have been dropped from the tests because
+they were generally for illegal UTF-8 byte sequences that won't transport
+well - they're illegal in XML.
 
-4) Resources
+4) How to use iris.xml
+
+To generate test URIs use the following steps.  The "testUri" is the
+end result atomic string used for testing URI parsing.  In some cases
+an HTML base ref is required to be set <base href="xyz" />.  This is
+useful to test resolution of the testUri against the base.
+
+foreach tc:group
+  if tc:test has tc:scheme && tc:ref 
+    then testUri is tc:scheme appended with tc:ref
+  if tc:test has tc:scheme // meaning we're just testing the scheme as the URI
+    then testUri is tc:scheme
+  if tc:test has tc:base && tc:ref
+    then set html base ref = tc:base
+    and testUri is tc:ref
+  if tc:test has tc:uri && tc:ref
+    then testUri is tc:uri appended with tc.ref
+
+
+5) Resources
 
 [1] <http://trac.webkit.org/browser/trunk/LayoutTests/fast/url/script-tests>
 [2] <http://greenbytes.de/tech/tc/uris/>

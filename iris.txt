@@ -1,0 +1,10 @@
+http://www.example.com/#hello, world
+http://www.example.com/#\xc2\xa9
+http://www.example.com/#𐌀ss
+http://www.example.com/#%41%a
+http://www.example.com/#\�\好
+http://www.example.com/#a\﷐
+http://www.example.com/#asdf#qwer
+http://www.example.com/##asdf
+http://www.example.com/#a
+bc	d
