@@ -56,7 +56,7 @@ well - they're illegal in XML.
 4) How to use iris.xml
 
 To generate test URIs use the following steps.  The "testUri" is the
-end result atomic string used for testing URI parsing.  In some cases
+end result string used for testing URI parsing.  In some cases
 an HTML base ref is required to be set <base href="xyz" />.  This is
 useful to test resolution of the testUri against the base.
 
@@ -65,7 +65,9 @@ foreach tc:group
     then testUri is tc:scheme appended with tc:ref
   if tc:test has tc:scheme // meaning we're just testing the scheme as the URI
     then testUri is tc:scheme
-  if tc:test has tc:base && tc:ref
+  if tc:test has tc:base && tc:ref && you don't care to test base resolution
+    the testUri is tc:base appended with tc:ref
+  else if tc:test has tc:base && tc:ref // you do want to test base resolution
     then set html base ref = tc:base
     and testUri is tc:ref
   if tc:test has tc:uri && tc:ref
