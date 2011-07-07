@@ -1,0 +1,109 @@
+<tc:tests xmlns:tc="mailto:chris@lookout.net?subject=URIs">
+  <tc:group id="normalization" href="#">
+    <tc:desc>Test cases for normalization behaviors - see http://www.unicode.org/reports/tr15/ Figure 6 and RFC3987</tc:desc>
+    <tc:test id="1000">
+      <tc:uri>http://iris.test.ing/</tc:uri>
+      <tc:ref><![CDATA[re&#x301;sume&#x301;/re&#x301;sume&#x301;.html]]></tc:ref>
+      <tc:expectRef><![CDATA[re&#x301;sume&#x301;/re&#x301;sume&#x301;.html]]></tc:expectRef>
+    </tc:test>
+    <tc:test id="1001">
+      <tc:uri>http://iris.test.ing/</tc:uri>
+      <tc:ref><![CDATA[r&#xE9;sum&#xE9;.html]]></tc:ref>
+      <tc:expectRef><![CDATA[r&#xE9;sum&#xE9;.html]]></tc:expectRef>
+    </tc:test>
+    <tc:test id="1002">
+      <tc:charset>windows-1258</tc:charset>
+      <tc:uri>http://iris.test.ing/</tc:uri>
+      <tc:ref><![CDATA[Vi&#xEA;&#x323;tNam.html]]></tc:ref>
+      <tc:expectRef><![CDATA[Vi&#xEA;&#x323;tNam.html]]></tc:expectRef>
+    </tc:test>
+    <tc:test id="1003">
+      <tc:uri>http://iris.test.ing/</tc:uri>
+      <tc:ref><![CDATA[&#xFB01;?&#xFB01;#&#xFB01;]]></tc:ref>
+      <tc:expectRef><![CDATA[&#xFB01;?&#xFB01;#&#xFB01;]]></tc:expectRef>
+    </tc:test>
+    <tc:test id="1004">
+      <tc:uri>http://iris.test.ing/</tc:uri>
+      <tc:ref><![CDATA[?re&#x301;sume&#x301;#re&#x301;sume&#x301;]]></tc:ref>
+      <tc:expectRef><![CDATA[?re&#x301;sume&#x301;#re&#x301;sume&#x301;]]></tc:expectRef>
+    </tc:test>
+    <tc:test id="1005">
+      <tc:uri>http://iris.test.ing/</tc:uri>
+      <tc:ref><![CDATA[2&#x2075;?2&#x2075;#2&#x2075;]]></tc:ref>
+      <tc:expectRef><![CDATA[2&#x2075;?2&#x2075;#2&#x2075;]]></tc:expectRef>
+    </tc:test>
+    <tc:test id="1006">
+      <tc:charset>windows-1258</tc:charset>
+      <tc:uri>http://iris.test.ing/</tc:uri>
+      <tc:ref><![CDATA[?Vi&#xEA;&#x323;tNam#Vi&#xEA;&#x323;tNam]]></tc:ref>
+      <tc:expectRef><![CDATA[?Vi&#xEA;&#x323;tNam#Vi&#xEA;&#x323;tNam]]></tc:expectRef>
+    </tc:test>
+    <tc:test id="1007">
+      <tc:charset>windows-1258</tc:charset>
+      <tc:uri>http://iris.test.ing/</tc:uri>
+      <tc:ref><![CDATA[foo?q=&#x2665;]]></tc:ref>
+      <tc:expectRef><![CDATA[foo?q=&#x2665;]]></tc:expectRef>
+    </tc:test>
+    <tc:test id="1008">
+      <tc:charset>utf-8</tc:charset>
+      <tc:uri>http://iris.test.ing/</tc:uri>
+      <tc:ref><![CDATA[&#x1E9B;&#x0323;/?&#x1E9B;&#x0323;#&#x1E9B;&#x0323;]]></tc:ref>
+      <tc:expectRef><![CDATA[&#x1E9B;&#x0323;/?&#x1E9B;&#x0323;#&#x1E9B;&#x0323;]]></tc:expectRef>
+    </tc:test>
+    <tc:test id="1009">
+      <tc:charset>utf-8</tc:charset>
+      <tc:uri>http://iris.test.ing/</tc:uri>
+      <tc:ref><![CDATA[&#x212B;/?&#x212B;#&#x212B;]]></tc:ref>
+      <tc:expectRef><![CDATA[&#x1E9B;&#x0323;/?&#x1E9B;&#x0323;#&#x1E9B;&#x0323;]]></tc:expectRef>
+    </tc:test>
+    <tc:test id="1010">
+      <tc:charset>utf-8</tc:charset>
+      <tc:uri>http://iris.test.ing/</tc:uri>
+      <tc:ref><![CDATA[?value=  foo  bar]]></tc:ref>
+      <tc:expectRef><![CDATA[?value=  foo  bar]]></tc:expectRef>
+    </tc:test>
+  </tc:group>
+  
+  <tc:group id="misc" href="#">
+    <tc:desc>Misc test cases</tc:desc>
+    <tc:test id="1100">
+      <tc:uri>http://user%40</tc:uri>
+      <tc:ref><![CDATA[example.com]]></tc:ref>
+      <tc:expectRef><![CDATA[example.com]]></tc:expectRef>
+    </tc:test>
+    <tc:test id="1101">
+      <tc:uri>http://user%3Ainfo%40</tc:uri>
+      <tc:ref><![CDATA[example.com]]></tc:ref>
+      <tc:expectRef><![CDATA[example.com]]></tc:expectRef>
+    </tc:test>
+    <tc:test id="1102">
+      <tc:uri>http://user@</tc:uri>
+      <tc:ref><![CDATA[example.com]]></tc:ref>
+      <tc:expectRef><![CDATA[example.com]]></tc:expectRef>
+    </tc:test>
+    <tc:test id="1103">
+      <tc:uri>http://user:info@</tc:uri>
+      <tc:ref><![CDATA[example.com]]></tc:ref>
+      <tc:expectRef><![CDATA[example.com]]></tc:expectRef>
+    </tc:test>
+    <tc:test id="1104">
+      <tc:uri>http://iris.test.ing</tc:uri>
+      <tc:ref><![CDATA[/&#xfdd0;foo]]></tc:ref>
+      <tc:expectRef><![CDATA[/%EF%BF%BDfoo]]></tc:expectRef>
+    </tc:test>
+    <tc:test id="1105">
+      <tc:uri>http://iris.test.ing</tc:uri>
+      <tc:ref><![CDATA[/&#xfdd0;foo/bar]]></tc:ref>
+      <tc:expectRef><![CDATA[/%EF%BF%BDfoo/bar]]></tc:expectRef>
+    </tc:test>
+    <tc:test id="1106">
+      <tc:scheme><![CDATA[$]]></tc:scheme>
+      <tc:expectScheme><![CDATA[$]]></tc:expectScheme>
+    </tc:test>
+    <tc:test id="1107">
+      <tc:scheme><![CDATA[a$]]></tc:scheme>
+      <tc:expectScheme><![CDATA[a$]]></tc:expectScheme>
+    </tc:test>
+  </tc:group>
+  
+</tc:tests>

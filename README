@@ -1,66 +1,57 @@
 iri-tests
 ===============
 
-A collection of URI and IRI strings useful for testing 
-processing in user-agents or other URL parsers.
+A collection of URI and IRI strings useful for deterministic testing 
+of user-agents or other URL parsers.
 
 1) iris.xml
-The main file containing the Webkit tests in XML form.  
-Also combines other test cases from various sources [1][2].
-Also includes the expected results of parsing.  In addition,
-some other files will be  produced for specific contexts:
+This is the  main file of test cases.  It contains the Webkit tests in XML 
+form plus it combines other test cases from various sources [1][2].
+Sometimes a test includes the expected results of parsing.  
 
-miris.xml - Modified iris.xml with hostnames to help correlate
-URL parsing across DNS queries, HTTP requests, and the DOM.
+TODO: Expected results are still TBD.
+
+NOTE:  I converted all \x to % so \xC2 becomes %C2.
+Some manual fixups required afterword right now:
+http://www.foo&#x3002;" + "bar.com should become http://www.foo&#x3002;bar.com
+
+In addition a plain text file was produced:
 
 iris.txt - An attempt to store test URIs/IRIs in a plain text file,
-one per line.  Expected results will not be stored.
+one per line.  Expected results will not be stored.  NOTE: Webkit had a bunch
+of tests that would set a <base href=""> but this file did not store any
+"base" information.  In those cases only the "reference" was stored.
+
+Supporting files: 
+
+miris.xml - More test cases that weren't in Webkit, modified with 
+hostnames to help correlate URL parsing across DNS queries, HTTP requests, 
+and the DOM.
 
 tests.xml - DEPRECATED.  The original format borrowed from Julian [3].
 
-2) gentcfiles.cs
-Generate the test case files.  Parse the test cases out of Webkit's 
-test suite [1] and store them in the XML formatted document named uris.xml.
-
-To compile under Mono:
->gmcs gentcfiles.cs
-
-To compile under Windows, from a Visual Studio command prompt:
->csc gentcfiles.cs
-
-Requirements:
-a) A subfolder named 'js' must exist with the javascript files from
-Webkit's test suite.
-
-Running:
-There are no command line parameters, simply run the executable:
->gentcfiles.exe
-
-3) TODOs
+2) TODOs
 
 a) Merge the old tests from tests.xml in to the new iris.xml format.
 
 b) Expected results are questionable right now and will need more work.
 Do not rely on them.
 
-c) miris.xml needs complete
-
-d) iris.text needs complete - should this use a UTF-8 document encoding?
-If so it will not be able to store the illegal UTF-8 test cases.
-
-e) BUGS? I've only spot checked the results, more review would be nice.
-- the orignal byte escapings \xNN have been dropped from the tests because
+c) BUGS? I've only spot checked the results, more review would be nice.
+- the orignal byte escapings \xNN have been converted to %xNN because
 they were generally for illegal UTF-8 byte sequences that won't transport
-well - they're illegal in XML.
+well - they're illegal in XML and a UTF-8 encoded text file.
 
-4) How to use iris.xml
+3) How to use iris.xml
 
 To generate test URIs use the following steps.  The "testUri" is the
-end result string used for testing URI parsing.  In some cases
+end result string used for testing URI or IRI parsing.  In some cases
 an HTML base ref is required to be set <base href="xyz" />.  This is
 useful to test resolution of the testUri against the base.
 
-foreach tc:group
+foreach tc:test in tc:group
+  if tc:charset exists
+    then set meta charset = tc:charset // Test document charset
   if tc:test has tc:scheme && tc:ref 
     then testUri is tc:scheme appended with tc:ref
   if tc:test has tc:scheme // meaning we're just testing the scheme as the URI
@@ -74,7 +65,7 @@ foreach tc:group
     then testUri is tc:uri appended with tc.ref
 
 
-5) Resources
+4) Resources
 
 [1] <http://trac.webkit.org/browser/trunk/LayoutTests/fast/url/script-tests>
 [2] <http://greenbytes.de/tech/tc/uris/>
