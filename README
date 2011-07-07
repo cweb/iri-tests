@@ -22,7 +22,7 @@ one per line.  Expected results will not be stored.  NOTE: Webkit had a bunch
 of tests that would set a <base href=""> but this file did not store any
 "base" information.  In those cases only the "reference" was stored.
 
-Supporting files: 
+Supporting files (Removed from the repo to reduce confusion): 
 
 miris.xml - More test cases that weren't in Webkit, modified with 
 hostnames to help correlate URL parsing across DNS queries, HTTP requests, 
