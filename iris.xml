@@ -3573,50 +3573,179 @@
       <tc:ref><![CDATA[&#x212B;/?&#x212B;#&#x212B;]]></tc:ref>
       <tc:expectRef><![CDATA[&#x1E9B;&#x0323;/?&#x1E9B;&#x0323;#&#x1E9B;&#x0323;]]></tc:expectRef>
     </tc:test>
+
+    <!-- Tests from UTS15 http://www.unicode.org/reports/tr15/#Description_Norm -->
     <tc:test id="570">
       <tc:charset>utf-8</tc:charset>
       <tc:uri>http://iris.test.ing/</tc:uri>
-      <tc:ref><![CDATA[?value=  foo  bar]]></tc:ref>
-      <tc:expectRef><![CDATA[?value=  foo  bar]]></tc:expectRef>
+      <tc:ref><![CDATA[&#x1E9B;&#x0323;/?&#x1E9B;&#x0323;#&#x1E9B;&#x0323;]]></tc:ref>
+      <tc:expectRef><![CDATA[&#x1E9B;&#x0323;/?&#x1E9B;&#x0323;#&#x1E9B;&#x0323;]]></tc:expectRef>
+    </tc:test>
+    <tc:test id="571">
+      <tc:charset>utf-8</tc:charset>
+      <tc:uri>http://iris.test.ing/</tc:uri>
+      <tc:ref><![CDATA[&#x1E0B;&#x0323;/?&#x1E0B;&#x0323;#&#x1E0B;&#x0323;]]></tc:ref>
+      <tc:expectRef><![CDATA[&#x1E0B;&#x0323;/?&#x1E0B;&#x0323;#&#x1E0B;&#x0323;]]></tc:expectRef>
+    </tc:test>
+  </tc:group><tc:group id="whitespace" href="#">
+    <tc:desc>Various references with white space</tc:desc>
+    <tc:test id="572">
+      <tc:uri>http://www.example.com/foo    bar/?   foo   =   bar     #    foo</tc:uri>
+      <tc:ref><![CDATA[http://www.example.com/foo    bar/?   foo   =   bar     #    foo]]></tc:ref>
+      <tc:expectRef><![CDATA[http://www.example.com/foo    bar/?   foo   =   bar     #    foo]]></tc:expectRef>
+    </tc:test>
+  </tc:group><tc:group id="percent-encoding" href="#">
+    <tc:desc>Test how percent-encoding is handled</tc:desc>
+    <tc:test id="573">
+      <tc:uri>http://www.example.com/</tc:uri>
+      <tc:ref><![CDATA[foo%3fbar]]></tc:ref>
+      <tc:expectRef><![CDATA[foo?bar]]></tc:expectRef>
+      <tc:comment>Test if delimeters such as "?" are unencoded.</tc:comment>
+    </tc:test>
+    <tc:test id="574">
+      <tc:uri>http://www.example.com/</tc:uri>
+      <tc:ref><![CDATA[foo%2fbar]]></tc:ref>
+      <tc:expectRef><![CDATA[foo/bar]]></tc:expectRef>
+      <tc:comment>Test if delimeters such as "/" are unencoded.</tc:comment>
+    </tc:test>
+    <tc:test id="575">
+      <tc:uri>%68%74%74%70%3a%2f%2f%77%77%77%2e%65%78%61%6d%70%6c%65%2e%63%6f%6d%2f</tc:uri>
+      <tc:ref><![CDATA[]]></tc:ref>
+      <tc:expectRef><![CDATA[http://www.example.com/]]></tc:expectRef>
+      <tc:comment>Test if entire string is unencoded..</tc:comment>
+    </tc:test>
+    <tc:test id="576">
+      <tc:uri>http%3a%2f%2f%77%77%77%2e%65%78%61%6d%70%6c%65%2e%63%6f%6d%2f</tc:uri>
+      <tc:ref><![CDATA[]]></tc:ref>
+      <tc:expectRef><![CDATA[http://www.example.com/]]></tc:expectRef>
+      <tc:comment>Test if scheme gets unencoded..</tc:comment>
+    </tc:test>
+    <tc:test id="577">
+      <tc:uri>http://%77%77%77%2e%65%78%61%6d%70%6c%65%2e%63%6f%6d%3a%38%30</tc:uri>
+      <tc:ref><![CDATA[]]></tc:ref>
+      <tc:expectRef><![CDATA[http://www.example.com:80/]]></tc:expectRef>
+      <tc:comment>Test if authority and port gets unencoded..</tc:comment>
+    </tc:test>
+    <tc:test id="578">
+	  <tc:charset>iso-8859-1</tc:charset>
+      <tc:uri>http://%A1%C1.com</tc:uri>
+      <tc:ref><![CDATA[]]></tc:ref>
+      <tc:expectRef><![CDATA[http://¡À.com]]></tc:expectRef>
+      <tc:comment></tc:comment>
+    </tc:test>
+    <tc:test id="579">
+	  <tc:charset>iso-8859-1</tc:charset>
+      <tc:uri>http://www.example.com/</tc:uri>
+      <tc:ref><![CDATA[%A1%C1/?foo=%EF%BD%81]]></tc:ref>
+      <tc:expectRef><![CDATA[http://www.example.com/%A1%C1/?foo=%EF%BD%81]]></tc:expectRef>
+      <tc:comment>Test mixed encodings.</tc:comment>
+    </tc:test>
+    <tc:test id="580">
+	  <tc:charset>iso-8859-1</tc:charset>
+      <tc:uri>http://www.example.com/</tc:uri>
+      <tc:ref><![CDATA[%EF%BD%81/?foo=%A1%C1]]></tc:ref>
+      <tc:expectRef><![CDATA[http://www.example.com/%EF%BD%81/?foo=%A1%C1]]></tc:expectRef>
+      <tc:comment>Test mixed encodings.</tc:comment>
+    </tc:test>
+    <tc:test id="581">
+	  <tc:charset>iso-8859-1</tc:charset>
+      <tc:uri>http://www.example.com/</tc:uri>
+      <tc:ref><![CDATA[ＦＯＯ/?foo=%A1%C1]]></tc:ref>
+      <tc:expectRef><![CDATA[http://www.example.com/ＦＯＯ/?foo=%A1%C1]]></tc:expectRef>
+      <tc:comment>Test mixed encodings.</tc:comment>
+    </tc:test>
+    <tc:test id="582">
+	  <tc:charset>iso-8859-1</tc:charset>
+      <tc:uri>http://www.example.com/</tc:uri>
+      <tc:ref><![CDATA[%A1%C1/?foo=ＦＯＯ]]></tc:ref>
+      <tc:expectRef><![CDATA[http://www.example.com/%A1%C1/?foo=ＦＯＯ]]></tc:expectRef>
+      <tc:comment>Test mixed encodings.</tc:comment>
+    </tc:test>
+    <tc:test id="583">
+	  <tc:charset>utf-8</tc:charset>
+      <tc:uri>http://www.example.com/</tc:uri>
+      <tc:ref><![CDATA[ＦＯＯ/?foo=%A1%C1]]></tc:ref>
+      <tc:expectRef><![CDATA[http://www.example.com/ＦＯＯ/?foo=%A1%C1]]></tc:expectRef>
+      <tc:comment>Test mixed encodings.</tc:comment>
+    </tc:test>
+    <tc:test id="584">
+	  <tc:charset>iso-8859-1</tc:charset>
+      <tc:uri>http://www.example.com/</tc:uri>
+      <tc:ref><![CDATA[D%FCrst]]></tc:ref>
+      <tc:expectRef><![CDATA[http://www.example.com/D%FCrst]]></tc:expectRef>
+      <tc:comment>The Martin Dürst test.</tc:comment>
+    </tc:test>
+    <tc:test id="585">
+	  <tc:charset>iso-8859-1</tc:charset>
+      <tc:uri>http://www.example.com/</tc:uri>
+      <tc:ref><![CDATA[D%C3%BCrst]]></tc:ref>
+      <tc:expectRef><![CDATA[http://www.example.com/D%C3%BCrst]]></tc:expectRef>
+      <tc:comment>The Martin Dürst test.</tc:comment>
+    </tc:test>
+    <tc:test id="586">
+	  <tc:charset>iso-8859-1</tc:charset>
+      <tc:uri>http://www.example.com/</tc:uri>
+      <tc:ref><![CDATA[?D%FCrst]]></tc:ref>
+      <tc:expectRef><![CDATA[http://www.example.com/?D%FCrst]]></tc:expectRef>
+      <tc:comment>The Martin Dürst test.</tc:comment>
+    </tc:test>
+    <tc:test id="587">
+	  <tc:charset>iso-8859-1</tc:charset>
+      <tc:uri>http://www.example.com/</tc:uri>
+      <tc:ref><![CDATA[?D%C3%BCrst]]></tc:ref>
+      <tc:expectRef><![CDATA[http://www.example.com/?D%C3%BCrst]]></tc:expectRef>
+      <tc:comment>The Martin Dürst test.</tc:comment>
     </tc:test>
   </tc:group><tc:group id="misc" href="#">
     <tc:desc>Misc test cases</tc:desc>
-    <tc:test id="571">
+    <tc:test id="588">
       <tc:uri>http://user%40</tc:uri>
       <tc:ref><![CDATA[example.com]]></tc:ref>
       <tc:expectRef><![CDATA[example.com]]></tc:expectRef>
     </tc:test>
-    <tc:test id="572">
+    <tc:test id="589">
       <tc:uri>http://user%3Ainfo%40</tc:uri>
       <tc:ref><![CDATA[example.com]]></tc:ref>
       <tc:expectRef><![CDATA[example.com]]></tc:expectRef>
     </tc:test>
-    <tc:test id="573">
+    <tc:test id="590">
       <tc:uri>http://user@</tc:uri>
       <tc:ref><![CDATA[example.com]]></tc:ref>
       <tc:expectRef><![CDATA[example.com]]></tc:expectRef>
     </tc:test>
-    <tc:test id="574">
+    <tc:test id="591">
       <tc:uri>http://user:info@</tc:uri>
       <tc:ref><![CDATA[example.com]]></tc:ref>
       <tc:expectRef><![CDATA[example.com]]></tc:expectRef>
     </tc:test>
-    <tc:test id="575">
+    <tc:test id="592">
       <tc:uri>http://iris.test.ing</tc:uri>
       <tc:ref><![CDATA[/&#xfdd0;foo]]></tc:ref>
       <tc:expectRef><![CDATA[/%EF%BF%BDfoo]]></tc:expectRef>
     </tc:test>
-    <tc:test id="576">
+    <tc:test id="593">
       <tc:uri>http://iris.test.ing</tc:uri>
       <tc:ref><![CDATA[/&#xfdd0;foo/bar]]></tc:ref>
       <tc:expectRef><![CDATA[/%EF%BF%BDfoo/bar]]></tc:expectRef>
     </tc:test>
-    <tc:test id="577">
+    <tc:test id="594">
       <tc:scheme><![CDATA[$]]></tc:scheme>
       <tc:expectScheme><![CDATA[$]]></tc:expectScheme>
     </tc:test>
-    <tc:test id="578">
+    <tc:test id="595">
       <tc:scheme><![CDATA[a$]]></tc:scheme>
       <tc:expectScheme><![CDATA[a$]]></tc:expectScheme>
+    </tc:test>
+    <tc:test id="596">
+      <tc:uri>http://www.example.com/</tc:uri>
+      <tc:ref><![CDATA[foo    bar/?   foo   =   bar     #    foo]]></tc:ref>
+      <tc:expectRef><![CDATA[http://www.example.com/foo    bar/?   foo   =   bar     #    foo]]></tc:expectRef>
+    </tc:test>
+    <tc:test id="597">
+      <tc:uri>
+        <![CDATA[htt&#x0070;://www.example.com/]]>
+      </tc:uri>
+      <tc:ref><![CDATA[&#x0066;&#x006f;&#x006f;bar&#x002f;foo&#x003f;bar]]></tc:ref>
+      <tc:expectRef><![CDATA[http://www.example.com/foo    bar/?   foo   =   bar     #    foo]]></tc:expectRef>
     </tc:test>
   </tc:group></tc:tests>

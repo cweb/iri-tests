@@ -567,7 +567,24 @@ http://iris.test.ing/?Vi&#xEA;&#x323;tNam#Vi&#xEA;&#x323;tNam
 http://iris.test.ing/foo?q=&#x2665;
 http://iris.test.ing/&#x1E9B;&#x0323;/?&#x1E9B;&#x0323;#&#x1E9B;&#x0323;
 http://iris.test.ing/&#x212B;/?&#x212B;#&#x212B;
-http://iris.test.ing/?value=  foo  bar
+http://iris.test.ing/&#x1E9B;&#x0323;/?&#x1E9B;&#x0323;#&#x1E9B;&#x0323;
+http://iris.test.ing/&#x1E0B;&#x0323;/?&#x1E0B;&#x0323;#&#x1E0B;&#x0323;
+http://www.example.com/foo    bar/?   foo   =   bar     #    foohttp://www.example.com/foo    bar/?   foo   =   bar     #    foo
+http://www.example.com/foo%3fbar
+http://www.example.com/foo%2fbar
+%68%74%74%70%3a%2f%2f%77%77%77%2e%65%78%61%6d%70%6c%65%2e%63%6f%6d%2f
+http%3a%2f%2f%77%77%77%2e%65%78%61%6d%70%6c%65%2e%63%6f%6d%2f
+http://%77%77%77%2e%65%78%61%6d%70%6c%65%2e%63%6f%6d%3a%38%30
+http://%A1%C1.com
+http://www.example.com/%A1%C1/?foo=%EF%BD%81
+http://www.example.com/%EF%BD%81/?foo=%A1%C1
+http://www.example.com/ＦＯＯ/?foo=%A1%C1
+http://www.example.com/%A1%C1/?foo=ＦＯＯ
+http://www.example.com/ＦＯＯ/?foo=%A1%C1
+http://www.example.com/D%FCrst
+http://www.example.com/D%C3%BCrst
+http://www.example.com/?D%FCrst
+http://www.example.com/?D%C3%BCrst
 http://user%40example.com
 http://user%3Ainfo%40example.com
 http://user@example.com
@@ -576,3 +593,7 @@ http://iris.test.ing/&#xfdd0;foo
 http://iris.test.ing/&#xfdd0;foo/bar
 $://iris.test.ing
 a$://iris.test.ing
+http://www.example.com/foo    bar/?   foo   =   bar     #    foo
+
+        htt&#x0070;://www.example.com/
+      &#x0066;&#x006f;&#x006f;bar&#x002f;foo&#x003f;bar
