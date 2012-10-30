@@ -1,0 +1,4124 @@
+[
+{
+  "group" : {
+    "name" : "anchor",
+    "link" : "http://trac.webkit.org/browser/trunk/LayoutTests/fast/url/script-tests/anchor.js",
+    "test": [
+      {
+      "id" : 1,
+      "uri" : "http://www.example.com/#",
+      "ref" : "hello, world",
+      "expectRef" : "hello, world"
+      },
+      {
+      "id" : 2,
+      "uri" : "http://www.example.com/#",
+      "ref" : "%c2%a9",
+      "expectRef" : "%c2%a9"
+      },
+      {
+      "id" : 3,
+      "uri" : "http://www.example.com/#",
+      "ref" : "\ud800\udf00ss",
+      "expectRef" : "\ud800\udf00ss"
+      },
+      {
+      "id" : 4,
+      "uri" : "http://www.example.com/#",
+      "ref" : "%41%a",
+      "expectRef" : "%41%a"
+      },
+      {
+      "id" : 5,
+      "uri" : "http://www.example.com/#",
+      "ref" : "\\ud800\\u597d",
+      "expectRef" : "\\uFFFD\\u597D"
+      },
+      {
+      "id" : 6,
+      "uri" : "http://www.example.com/#",
+      "ref" : "a\\uFDD0",
+      "expectRef" : "a\\uFDD0"
+      },
+      {
+      "id" : 7,
+      "uri" : "http://www.example.com/#",
+      "ref" : "asdf#qwer",
+      "expectRef" : "asdf#qwer"
+      },
+      {
+      "id" : 8,
+      "uri" : "http://www.example.com/#",
+      "ref" : "#asdf",
+      "expectRef" : "#asdf"
+      },
+      {
+      "id" : 9,
+      "uri" : "http://www.example.com/#",
+      "ref" : "a\\nb\\rc\\td",
+      "expectRef" : "abcd"
+      }
+    ]
+  },
+  "group" : {
+    "name" : "file-http-base",
+    "link" : "http://trac.webkit.org/browser/trunk/LayoutTests/fast/url/script-tests/file-http-base.js",
+    "test": [
+      {
+      "id" : 10,
+      "base" : "http://www.example.com/foo/bar",
+      "ref" : "file:c:\\\\foo\\\\bar.html",
+      "expectRef" : "file:///C:/foo/bar.html"
+      },
+      {
+      "id" : 11,
+      "base" : "http://www.example.com/foo/bar",
+      "ref" : "  File:c|////foo\\\\bar.html",
+      "expectRef" : "file:///C:////foo/bar.html"
+      },
+      {
+      "id" : 12,
+      "base" : "http://www.example.com/foo/bar",
+      "ref" : "file:",
+      "expectRef" : "file:///"
+      },
+      {
+      "id" : 13,
+      "base" : "http://www.example.com/foo/bar",
+      "ref" : "file:UNChost/path",
+      "expectRef" : "file://unchost/path"
+      },
+      {
+      "id" : 14,
+      "base" : "http://www.example.com/foo/bar",
+      "ref" : "c:\\\\foo\\\\bar",
+      "expectRef" : "file:///C:/foo/bar"
+      },
+      {
+      "id" : 15,
+      "base" : "http://www.example.com/foo/bar",
+      "ref" : "C|/foo/bar",
+      "expectRef" : "file:///C:/foo/bar"
+      },
+      {
+      "id" : 16,
+      "base" : "http://www.example.com/foo/bar",
+      "ref" : "/C|\\\\foo\\\\bar",
+      "expectRef" : "file:///C:/foo/bar"
+      },
+      {
+      "id" : 17,
+      "base" : "http://www.example.com/foo/bar",
+      "ref" : "//C|/foo/bar",
+      "expectRef" : "file:///C:/foo/bar"
+      },
+      {
+      "id" : 18,
+      "base" : "http://www.example.com/foo/bar",
+      "ref" : "//server/file",
+      "expectRef" : "file://server/file"
+      },
+      {
+      "id" : 19,
+      "base" : "http://www.example.com/foo/bar",
+      "ref" : "\\\\\\\\server\\\\file",
+      "expectRef" : "file://server/file"
+      },
+      {
+      "id" : 20,
+      "base" : "http://www.example.com/foo/bar",
+      "ref" : "/\\\\server/file",
+      "expectRef" : "file://server/file"
+      },
+      {
+      "id" : 21,
+      "base" : "http://www.example.com/foo/bar",
+      "ref" : "file:c:foo/bar.html",
+      "expectRef" : "file:///C:/foo/bar.html"
+      },
+      {
+      "id" : 22,
+      "base" : "http://www.example.com/foo/bar",
+      "ref" : "file:/\\\\/\\\\C:\\\\\\\\//foo\\\\bar.html",
+      "expectRef" : "file:///C:////foo/bar.html"
+      },
+      {
+      "id" : 23,
+      "base" : "http://www.example.com/foo/bar",
+      "ref" : "file:///foo/bar.txt",
+      "expectRef" : "file:///foo/bar.txt"
+      },
+      {
+      "id" : 24,
+      "base" : "http://www.example.com/foo/bar",
+      "ref" : "FILE:/\\\\/\\\\7:\\\\\\\\//foo\\\\bar.html",
+      "expectRef" : "file://7:////foo/bar.html"
+      },
+      {
+      "id" : 25,
+      "base" : "http://www.example.com/foo/bar",
+      "ref" : "file:filer/home\\\\me",
+      "expectRef" : "file://filer/home/me"
+      },
+      {
+      "id" : 26,
+      "base" : "http://www.example.com/foo/bar",
+      "ref" : "file:///C:/foo/../../../bar.html",
+      "expectRef" : "file:///C:/bar.html"
+      },
+      {
+      "id" : 27,
+      "base" : "http://www.example.com/foo/bar",
+      "ref" : "file:///C:/asdf#\\%c2",
+      "expectRef" : "file:///C:/asdf#\\%ef\\%bf\\%bd"
+      },
+      {
+      "id" : 28,
+      "base" : "http://www.example.com/foo/bar",
+      "ref" : "file:///home/me",
+      "expectRef" : "file:///home/me"
+      },
+      {
+      "id" : 29,
+      "base" : "http://www.example.com/foo/bar",
+      "ref" : "file:c:\\\\foo\\\\bar.html",
+      "expectRef" : "file:///c:/foo/bar.html"
+      },
+      {
+      "id" : 30,
+      "base" : "http://www.example.com/foo/bar",
+      "ref" : "file:c|//foo\\\\bar.html",
+      "expectRef" : "file:///c%7C//foo/bar.html"
+      },
+      {
+      "id" : 31,
+      "base" : "http://www.example.com/foo/bar",
+      "ref" : "//",
+      "expectRef" : "file:///"
+      },
+      {
+      "id" : 32,
+      "base" : "http://www.example.com/foo/bar",
+      "ref" : "///",
+      "expectRef" : "file:///"
+      },
+      {
+      "id" : 33,
+      "base" : "http://www.example.com/foo/bar",
+      "ref" : "///test",
+      "expectRef" : "file:///test"
+      },
+      {
+      "id" : 34,
+      "base" : "http://www.example.com/foo/bar",
+      "ref" : "file://test",
+      "expectRef" : "file://test/"
+      },
+      {
+      "id" : 35,
+      "base" : "http://www.example.com/foo/bar",
+      "ref" : "file://localhost/",
+      "expectRef" : "file://localhost/"
+      },
+      {
+      "id" : 36,
+      "base" : "http://www.example.com/foo/bar",
+      "ref" : "file://localhost/test",
+      "expectRef" : "file://localhost/test"
+      }
+    ]
+  },
+  "group" : {
+    "name" : "file",
+    "link" : "http://trac.webkit.org/browser/trunk/LayoutTests/fast/url/script-tests/file.js",
+    "test": [
+      {
+      "id" : 37,
+      "base" : "file:///tmp/mock/path",
+      "ref" : "file:c:\\\\foo\\\\bar.html",
+      "expectRef" : "file:///C:/foo/bar.html"
+      },
+      {
+      "id" : 38,
+      "base" : "file:///tmp/mock/path",
+      "ref" : "  File:c|////foo\\\\bar.html",
+      "expectRef" : "file:///C:////foo/bar.html"
+      },
+      {
+      "id" : 39,
+      "base" : "file:///tmp/mock/path",
+      "ref" : "file:",
+      "expectRef" : "file:///"
+      },
+      {
+      "id" : 40,
+      "base" : "file:///tmp/mock/path",
+      "ref" : "file:UNChost/path",
+      "expectRef" : "file://unchost/path"
+      },
+      {
+      "id" : 41,
+      "base" : "file:///tmp/mock/path",
+      "ref" : "c:\\\\foo\\\\bar",
+      "expectRef" : "file:///C:/foo/bar"
+      },
+      {
+      "id" : 42,
+      "base" : "file:///tmp/mock/path",
+      "ref" : "C|/foo/bar",
+      "expectRef" : "file:///C:/foo/bar"
+      },
+      {
+      "id" : 43,
+      "base" : "file:///tmp/mock/path",
+      "ref" : "/C|\\\\foo\\\\bar",
+      "expectRef" : "file:///C:/foo/bar"
+      },
+      {
+      "id" : 44,
+      "base" : "file:///tmp/mock/path",
+      "ref" : "//C|/foo/bar",
+      "expectRef" : "file:///C:/foo/bar"
+      },
+      {
+      "id" : 45,
+      "base" : "file:///tmp/mock/path",
+      "ref" : "//server/file",
+      "expectRef" : "file://server/file"
+      },
+      {
+      "id" : 46,
+      "base" : "file:///tmp/mock/path",
+      "ref" : "\\\\\\\\server\\\\file",
+      "expectRef" : "file://server/file"
+      },
+      {
+      "id" : 47,
+      "base" : "file:///tmp/mock/path",
+      "ref" : "/\\\\server/file",
+      "expectRef" : "file://server/file"
+      },
+      {
+      "id" : 48,
+      "base" : "file:///tmp/mock/path",
+      "ref" : "file:c:foo/bar.html",
+      "expectRef" : "file:///C:/foo/bar.html"
+      },
+      {
+      "id" : 49,
+      "base" : "file:///tmp/mock/path",
+      "ref" : "file:/\\\\/\\\\C:\\\\\\\\//foo\\\\bar.html",
+      "expectRef" : "file:///C:////foo/bar.html"
+      },
+      {
+      "id" : 50,
+      "base" : "file:///tmp/mock/path",
+      "ref" : "file:///foo/bar.txt",
+      "expectRef" : "file:///foo/bar.txt"
+      },
+      {
+      "id" : 51,
+      "base" : "file:///tmp/mock/path",
+      "ref" : "FILE:/\\\\/\\\\7:\\\\\\\\//foo\\\\bar.html",
+      "expectRef" : "file://7:////foo/bar.html"
+      },
+      {
+      "id" : 52,
+      "base" : "file:///tmp/mock/path",
+      "ref" : "file:filer/home\\\\me",
+      "expectRef" : "file://filer/home/me"
+      },
+      {
+      "id" : 53,
+      "base" : "file:///tmp/mock/path",
+      "ref" : "file:///C:/foo/../../../bar.html",
+      "expectRef" : "file:///C:/bar.html"
+      },
+      {
+      "id" : 54,
+      "base" : "file:///tmp/mock/path",
+      "ref" : "file:///C:/asdf#\\%c2",
+      "expectRef" : "file:///C:/asdf#\\%ef\\%bf\\%bd"
+      },
+      {
+      "id" : 55,
+      "base" : "file:///tmp/mock/path",
+      "ref" : "file:///home/me",
+      "expectRef" : "file:///home/me"
+      },
+      {
+      "id" : 56,
+      "base" : "file:///tmp/mock/path",
+      "ref" : "file:c:\\\\foo\\\\bar.html",
+      "expectRef" : "file:///c:/foo/bar.html"
+      },
+      {
+      "id" : 57,
+      "base" : "file:///tmp/mock/path",
+      "ref" : "file:c|//foo\\\\bar.html",
+      "expectRef" : "file:///c%7C//foo/bar.html"
+      },
+      {
+      "id" : 58,
+      "base" : "file:///tmp/mock/path",
+      "ref" : "//",
+      "expectRef" : "file:///"
+      },
+      {
+      "id" : 59,
+      "base" : "file:///tmp/mock/path",
+      "ref" : "///",
+      "expectRef" : "file:///"
+      },
+      {
+      "id" : 60,
+      "base" : "file:///tmp/mock/path",
+      "ref" : "///test",
+      "expectRef" : "file:///test"
+      },
+      {
+      "id" : 61,
+      "base" : "file:///tmp/mock/path",
+      "ref" : "file://test",
+      "expectRef" : "file://test/"
+      },
+      {
+      "id" : 62,
+      "base" : "file:///tmp/mock/path",
+      "ref" : "file://localhost/",
+      "expectRef" : "file://localhost/"
+      },
+      {
+      "id" : 63,
+      "base" : "file:///tmp/mock/path",
+      "ref" : "file://localhost/test",
+      "expectRef" : "file://localhost/test"
+      }
+    ]
+  },
+  "group" : {
+    "name" : "host",
+    "link" : "http://trac.webkit.org/browser/trunk/LayoutTests/fast/url/script-tests/host.js",
+    "test": [
+      {
+      "id" : 64,
+      "scheme" : "http://",
+      "ref" : "GoOgLe.CoM",
+      "expectRef" : "google.com"
+      },
+      {
+      "id" : 65,
+      "scheme" : "http://",
+      "ref" : "Goo%20 goo%7C|.com",
+      "expectRef" : "goo%20%20goo%7C%7C.com"
+      },
+      {
+      "id" : 66,
+      "scheme" : "http://",
+      "ref" : "GOO\u00a0\u3000goo.com",
+      "expectRef" : "goo%20%20goo.com"
+      },
+      {
+      "id" : 67,
+      "scheme" : "http://",
+      "ref" : "GOO\u200b\u2060\ufeffgoo.com",
+      "expectRef" : "googoo.com"
+      },
+      {
+      "id" : 68,
+      "scheme" : "http://",
+      "ref" : "www.foo\u3002bar.com",
+      "expectRef" : "www.foo.bar.com"
+      },
+      {
+      "id" : 69,
+      "scheme" : "http://",
+      "ref" : "\ufdd0zyx.com",
+      "expectRef" : "%EF%BF%BDzyx.com"
+      },
+      {
+      "id" : 70,
+      "scheme" : "http://",
+      "ref" : "%ef%b7%90zyx.com",
+      "expectRef" : "%EF%BF%BDzyx.com"
+      },
+      {
+      "id" : 71,
+      "scheme" : "http://",
+      "ref" : "\uff27\uff4f.com",
+      "expectRef" : "go.com"
+      },
+      {
+      "id" : 72,
+      "scheme" : "http://",
+      "ref" : "\uff05\uff14\uff11.com",
+      "expectRef" : "a.com"
+      },
+      {
+      "id" : 73,
+      "scheme" : "http://",
+      "ref" : "%ef%bc%85%ef%bc%94%ef%bc%91.com",
+      "expectRef" : "a.com"
+      },
+      {
+      "id" : 74,
+      "scheme" : "http://",
+      "ref" : "\uff05\uff10\uff10.com",
+      "expectRef" : "%00.com"
+      },
+      {
+      "id" : 75,
+      "scheme" : "http://",
+      "ref" : "%ef%bc%85%ef%bc%90%ef%bc%90.com",
+      "expectRef" : "%00.com"
+      },
+      {
+      "id" : 76,
+      "scheme" : "http://",
+      "ref" : "\u4f60\u597d\u4f60\u597d",
+      "expectRef" : "xn--6qqa088eba"
+      },
+      {
+      "id" : 77,
+      "scheme" : "http://",
+      "ref" : "%E4%BD%A0%E5%A5%BD\u4f60\u597d",
+      "expectRef" : "xn--6qqa088eba"
+      },
+      {
+      "id" : 78,
+      "scheme" : "http://",
+      "ref" : "%zz%66%a",
+      "expectRef" : "%25zzf%25a"
+      },
+      {
+      "id" : 79,
+      "scheme" : "http://",
+      "ref" : "%25",
+      "expectRef" : "%25"
+      },
+      {
+      "id" : 80,
+      "scheme" : "http://",
+      "ref" : "hello%00",
+      "expectRef" : "hello%00"
+      },
+      {
+      "id" : 81,
+      "scheme" : "http://",
+      "ref" : "%30%78%63%30%2e%30%32%35%30.01",
+      "expectRef" : "192.168.0.1"
+      },
+      {
+      "id" : 82,
+      "scheme" : "http://",
+      "ref" : "%30%78%63%30%2e%30%32%35%30.01%2e",
+      "expectRef" : "192.168.0.1"
+      },
+      {
+      "id" : 83,
+      "scheme" : "http://",
+      "ref" : "%3g%78%63%30%2e%30%32%35%30%2E.01",
+      "expectRef" : "%253gxc0.0250..01"
+      },
+      {
+      "id" : 84,
+      "scheme" : "http://",
+      "ref" : "192.168.0.1 hello",
+      "expectRef" : "192.168.0.1%20hello"
+      },
+      {
+      "id" : 85,
+      "scheme" : "http://",
+      "ref" : "\uff10\uff38\uff43\uff10\uff0e\uff10\uff12\uff15\uff10\uff0e\uff10\uff11",
+      "expectRef" : "192.168.0.1"
+      },
+      {
+      "id" : 86,
+      "scheme" : "http://",
+      "ref" : "192.168.0.257",
+      "expectRef" : "192.168.0.257"
+      },
+      {
+      "id" : 87,
+      "scheme" : "http://",
+      "ref" : "[google.com]",
+      "expectRef" : "[google.com]"
+      },
+      {
+      "id" : 88,
+      "scheme" : "http://",
+      "ref" : "\u0442(",
+      "expectRef" : "xn--%28-7ed"
+      },
+      {
+      "id" : 89,
+      "scheme" : "http://",
+      "ref" : "go\\@ogle.com",
+      "expectRef" : "go@ogle.com"
+      },
+      {
+      "id" : 90,
+      "scheme" : "http://",
+      "ref" : "go/@ogle.com",
+      "expectRef" : "go@ogle.com"
+      },
+      {
+      "id" : 91,
+      "scheme" : "http://",
+      "ref" : "www.lookout.net::==80::==443::",
+      "expectRef" : "lookout.net"
+      },
+      {
+      "id" : 92,
+      "scheme" : "http://",
+      "ref" : "www.lookout.net::80::443",
+      "expectRef" : "lookout.net"
+      },
+      {
+      "id" : 93,
+      "scheme" : "http://",
+      "ref" : "\\",
+      "expectRef" : "\\"
+      },
+      {
+      "id" : 94,
+      "scheme" : "http://",
+      "ref" : "\\\/",
+      "expectRef" : "."
+      },
+      {
+      "id" : 95,
+      "scheme" : "http://",
+      "ref" : "\\./",
+      "expectRef" : "."
+      },
+      {
+      "id" : 96,
+      "scheme" : "http://",
+      "ref" : "//:@/",
+      "expectRef" : "."
+      },
+      {
+      "id" : 97,
+      "scheme" : "http://",
+      "ref" : "\\google.com/foo",
+      "expectRef" : "google.com/foo"
+      },
+      {
+      "id" : 98,
+      "scheme" : "http://",
+      "ref" : "\\\\google.com/foo",
+      "expectRef" : "google.com/foo"
+      },
+      {
+      "id" : 99,
+      "scheme" : "http://",
+      "ref" : "//asdf@/",
+      "expectRef" : "."
+      },
+      {
+      "id" : 100,
+      "scheme" : "http://",
+      "ref" : "//:81",
+      "expectRef" : "."
+      },
+      {
+      "id" : 101,
+      "scheme" : "http://",
+      "ref" : "://",
+      "expectRef" : "."
+      },
+      {
+      "id" : 102,
+      "scheme" : "http://",
+      "ref" : "c:",
+      "expectRef" : "."
+      },
+      {
+      "id" : 103,
+      "scheme" : "http://",
+      "ref" : "xxxx:",
+      "expectRef" : "."
+      },
+      {
+      "id" : 104,
+      "scheme" : "http://",
+      "ref" : ".:.",
+      "expectRef" : "."
+      },
+      {
+      "id" : 105,
+      "scheme" : "http://",
+      "ref" : "////@google.com/",
+      "expectRef" : "."
+      },
+      {
+      "id" : 106,
+      "scheme" : "http://",
+      "ref" : "@google.com",
+      "expectRef" : "google.com"
+      }
+    ]
+  },
+  "group" : {
+    "name" : "idna2003",
+    "link" : "http://trac.webkit.org/browser/trunk/LayoutTests/fast/url/script-tests/idna2003.js",
+    "test": [
+      {
+      "id" : 107,
+      "scheme" : "http://",
+      "ref" : "fa\u00DF.de",
+      "expectRef" : "fass.de"
+      },
+      {
+      "id" : 108,
+      "scheme" : "http://",
+      "ref" : "\u03B2\u03CC\u03BB\u03BF\u03C2.com",
+      "expectRef" : "xn--nxasmq6b.com"
+      },
+      {
+      "id" : 109,
+      "scheme" : "http://",
+      "ref" : "\u0DC1\u0DCA\u200D\u0DBB\u0DD3.com",
+      "expectRef" : "xn--10cl1a0b.com"
+      },
+      {
+      "id" : 110,
+      "scheme" : "http://",
+      "ref" : "\u0646\u0627\u0645\u0647\u200C\u0627\u06CC.com",
+      "expectRef" : "xn--mgba3gch31f.com"
+      },
+      {
+      "id" : 111,
+      "scheme" : "http://",
+      "ref" : "www.loo\u0138out.net",
+      "expectRef" : "www.xn--looout-5bb.net"
+      },
+      {
+      "id" : 112,
+      "scheme" : "http://",
+      "ref" : "\u15EF\u15EF\u15EF.lookout.net",
+      "expectRef" : "xn--1qeaa.lookout.net"
+      },
+      {
+      "id" : 113,
+      "scheme" : "http://",
+      "ref" : "www.lookout.\u0441\u043E\u043C",
+      "expectRef" : "www.lookout.xn--l1adi"
+      },
+      {
+      "id" : 114,
+      "scheme" : "http://",
+      "ref" : "www.lookout.net\uFF1A80",
+      "expectRef" : "www.lookout.net:80"
+      },
+      {
+      "id" : 115,
+      "scheme" : "http://",
+      "ref" : "www\u2025lookout.net",
+      "expectRef" : "www..lookout.net"
+      },
+      {
+      "id" : 116,
+      "scheme" : "http://",
+      "ref" : "www.lookout\u2027net",
+      "expectRef" : "www.xn--lookoutnet-406e"
+      },
+      {
+      "id" : 117,
+      "scheme" : "http://",
+      "ref" : "www.loo\u0138out.net",
+      "expectRef" : "www.xn--looout-5bb.net"
+      },
+      {
+      "id" : 118,
+      "scheme" : "http://",
+      "ref" : "www.lookout.net\u2A7480",
+      "expectRef" : "www.lookout.net::%3D80"
+      },
+      {
+      "id" : 119,
+      "scheme" : "http://",
+      "ref" : "www\u00A0.lookout.net",
+      "expectRef" : "www%20.lookout.net"
+      },
+      {
+      "id" : 120,
+      "scheme" : "http://",
+      "ref" : "\u1680lookout.net",
+      "expectRef" : "%E1%9A%80lookout.net"
+      },
+      {
+      "id" : 121,
+      "scheme" : "http://",
+      "ref" : "\u001Flookout.net",
+      "expectRef" : "%1Flookout.net"
+      },
+      {
+      "id" : 122,
+      "scheme" : "http://",
+      "ref" : "look\u06DDout.net",
+      "expectRef" : "look%DB%9Dout.net"
+      },
+      {
+      "id" : 123,
+      "scheme" : "http://",
+      "ref" : "look\u180Eout.net",
+      "expectRef" : "look%E1%A0%8Eout.net"
+      },
+      {
+      "id" : 124,
+      "scheme" : "http://",
+      "ref" : "look\u2060out.net",
+      "expectRef" : "look%E2%81%A0out.net"
+      },
+      {
+      "id" : 125,
+      "scheme" : "http://",
+      "ref" : "look\uFEFFout.net",
+      "expectRef" : "look%EF%BB%BFout.net"
+      },
+      {
+      "id" : 126,
+      "scheme" : "http://",
+      "ref" : "look\uD83F\uDFFEout.net",
+      "expectRef" : "look%F0%9F%BF%BEout.net"
+      },
+      {
+      "id" : 127,
+      "scheme" : "http://",
+      "ref" : "look\uDEADout.net",
+      "expectRef" : "look%ED%BA%ADout.net"
+      },
+      {
+      "id" : 128,
+      "scheme" : "http://",
+      "ref" : "look\uFFFAout.net",
+      "expectRef" : "look%EF%BF%BAout.net"
+      },
+      {
+      "id" : 129,
+      "scheme" : "http://",
+      "ref" : "look\u2FF0out.net",
+      "expectRef" : "look%E2%BF%B0out.net"
+      },
+      {
+      "id" : 130,
+      "scheme" : "http://",
+      "ref" : "look\u0341out.net",
+      "expectRef" : "look%CD%81out.net"
+      },
+      {
+      "id" : 131,
+      "scheme" : "http://",
+      "ref" : "look\u202Eout.net",
+      "expectRef" : "look%E2%80%AEout.net"
+      },
+      {
+      "id" : 132,
+      "scheme" : "http://",
+      "ref" : "look\u206Bout.net",
+      "expectRef" : "look%E2%81%ABout.net"
+      },
+      {
+      "id" : 133,
+      "scheme" : "http://",
+      "ref" : "look\uDB40\uDC01out.net",
+      "expectRef" : "look%F3%A0%80%81out.net"
+      },
+      {
+      "id" : 134,
+      "scheme" : "http://",
+      "ref" : "look\uDB40\uDC20out.net",
+      "expectRef" : "look%F3%A0%80%A0out.net"
+      },
+      {
+      "id" : 135,
+      "scheme" : "http://",
+      "ref" : "look\u05BEout.net",
+      "expectRef" : "look%D6%BEout.net"
+      }
+    ]
+  },
+  "group" : {
+    "name" : "idna2008",
+    "link" : "http://trac.webkit.org/browser/trunk/LayoutTests/fast/url/script-tests/idna2008.js",
+    "test": [
+      {
+      "id" : 136,
+      "scheme" : "http://",
+      "ref" : "B\u00FCcher.de",
+      "expectRef" : "xn--bcher-kva.de"
+      },
+      {
+      "id" : 137,
+      "scheme" : "http://",
+      "ref" : "fa\u00DF.de",
+      "expectRef" : "xn--fa-hia.de"
+      },
+      {
+      "id" : 138,
+      "scheme" : "http://",
+      "ref" : "\u03B2\u03CC\u03BB\u03BF\u03C2.com",
+      "expectRef" : "xn--nxasmm1c.com"
+      },
+      {
+      "id" : 139,
+      "scheme" : "http://",
+      "ref" : "\u0DC1\u0DCA\u200D\u0DBB\u0DD3.com",
+      "expectRef" : "xn--10cl1a0b660p.com"
+      },
+      {
+      "id" : 140,
+      "scheme" : "http://",
+      "ref" : "\u0646\u0627\u0645\u0647\u200C\u0627\u06CC.com",
+      "expectRef" : "xn--mgba3gch31f060k.com"
+      },
+      {
+      "id" : 141,
+      "scheme" : "http://",
+      "ref" : "\u2665.net",
+      "expectRef" : "\uFFFD.net"
+      },
+      {
+      "id" : 142,
+      "scheme" : "http://",
+      "ref" : "\u0378.net",
+      "expectRef" : "\uFFFD.net"
+      },
+      {
+      "id" : 143,
+      "scheme" : "http://",
+      "ref" : "\u04C0.com",
+      "expectRef" : "\uFFFD.com"
+      },
+      {
+      "id" : 144,
+      "scheme" : "http://",
+      "ref" : "\uD87E\uDC68.com",
+      "expectRef" : "\uFFFD.com"
+      },
+      {
+      "id" : 145,
+      "scheme" : "http://",
+      "ref" : "\u2183.com",
+      "expectRef" : "\uFFFD.com"
+      },
+      {
+      "id" : 146,
+      "scheme" : "http://",
+      "ref" : "look\u034Fout.net",
+      "expectRef" : "lookout.net"
+      },
+      {
+      "id" : 147,
+      "scheme" : "http://",
+      "ref" : "gOoGle.com",
+      "expectRef" : "google.com"
+      },
+      {
+      "id" : 148,
+      "scheme" : "http://",
+      "ref" : "\u09dc.com",
+      "expectRef" : "\u09A1\u09BC.com"
+      },
+      {
+      "id" : 149,
+      "scheme" : "http://",
+      "ref" : "\u1E9E.com",
+      "expectRef" : "ss.com"
+      },
+      {
+      "id" : 150,
+      "scheme" : "http://",
+      "ref" : "\u1E9E.foo.com",
+      "expectRef" : "ss.foo.com"
+      },
+      {
+      "id" : 151,
+      "scheme" : "http://",
+      "ref" : "-foo.bar.com",
+      "expectRef" : ""
+      },
+      {
+      "id" : 152,
+      "scheme" : "http://",
+      "ref" : "foo-.bar.com",
+      "expectRef" : ""
+      },
+      {
+      "id" : 153,
+      "scheme" : "http://",
+      "ref" : "ab--cd.com",
+      "expectRef" : ""
+      },
+      {
+      "id" : 154,
+      "scheme" : "http://",
+      "ref" : "xn--0.com",
+      "expectRef" : ""
+      },
+      {
+      "id" : 155,
+      "scheme" : "http://",
+      "ref" : "foo\u0300.bar.com",
+      "expectRef" : "foo%CC%80.bar.com"
+      }
+    ]
+  },
+  "group" : {
+    "name" : "ipv4",
+    "link" : "http://trac.webkit.org/browser/trunk/LayoutTests/fast/url/script-tests/ipv4.js",
+    "test": [
+      {
+      "id" : 156,
+      "scheme" : "http://",
+      "ref" : ".",
+      "expectRef" : ""
+      },
+      {
+      "id" : 157,
+      "scheme" : "http://",
+      "ref" : "192.168.0.1",
+      "expectRef" : "192.168.0.1"
+      },
+      {
+      "id" : 158,
+      "scheme" : "http://",
+      "ref" : "0300.0250.00.01",
+      "expectRef" : "192.168.0.1"
+      },
+      {
+      "id" : 159,
+      "scheme" : "http://",
+      "ref" : "0xC0.0Xa8.0x0.0x1",
+      "expectRef" : "192.168.0.1"
+      },
+      {
+      "id" : 160,
+      "scheme" : "http://",
+      "ref" : "192.168.9.com",
+      "expectRef" : ""
+      },
+      {
+      "id" : 161,
+      "scheme" : "http://",
+      "ref" : "19a.168.0.1",
+      "expectRef" : ""
+      },
+      {
+      "id" : 162,
+      "scheme" : "http://",
+      "ref" : "0308.0250.00.01",
+      "expectRef" : ""
+      },
+      {
+      "id" : 163,
+      "scheme" : "http://",
+      "ref" : "0xCG.0xA8.0x0.0x1",
+      "expectRef" : ""
+      },
+      {
+      "id" : 164,
+      "scheme" : "http://",
+      "ref" : "192",
+      "expectRef" : "0.0.0.192"
+      },
+      {
+      "id" : 165,
+      "scheme" : "http://",
+      "ref" : "0xC0a80001",
+      "expectRef" : "192.168.0.1"
+      },
+      {
+      "id" : 166,
+      "scheme" : "http://",
+      "ref" : "030052000001",
+      "expectRef" : "192.168.0.1"
+      },
+      {
+      "id" : 167,
+      "scheme" : "http://",
+      "ref" : "000030052000001",
+      "expectRef" : "192.168.0.1"
+      },
+      {
+      "id" : 168,
+      "scheme" : "http://",
+      "ref" : "192.168",
+      "expectRef" : "192.0.0.168"
+      },
+      {
+      "id" : 169,
+      "scheme" : "http://",
+      "ref" : "192.0x00A80001",
+      "expectRef" : "192.168.0.1"
+      },
+      {
+      "id" : 170,
+      "scheme" : "http://",
+      "ref" : "0xc0.052000001",
+      "expectRef" : "192.168.0.1"
+      },
+      {
+      "id" : 171,
+      "scheme" : "http://",
+      "ref" : "192.168.1",
+      "expectRef" : "192.168.0.1"
+      },
+      {
+      "id" : 172,
+      "scheme" : "http://",
+      "ref" : "192.168.0.0.1",
+      "expectRef" : ""
+      },
+      {
+      "id" : 173,
+      "scheme" : "http://",
+      "ref" : "192.168.0.1.",
+      "expectRef" : "192.168.0.1"
+      },
+      {
+      "id" : 174,
+      "scheme" : "http://",
+      "ref" : "192.168.0.1. hello",
+      "expectRef" : ""
+      },
+      {
+      "id" : 175,
+      "scheme" : "http://",
+      "ref" : "192.168.0.1..",
+      "expectRef" : ""
+      },
+      {
+      "id" : 176,
+      "scheme" : "http://",
+      "ref" : "192.168..1",
+      "expectRef" : ""
+      },
+      {
+      "id" : 177,
+      "scheme" : "http://",
+      "ref" : "0x100.0",
+      "expectRef" : ""
+      },
+      {
+      "id" : 178,
+      "scheme" : "http://",
+      "ref" : "0x100.0.0",
+      "expectRef" : ""
+      },
+      {
+      "id" : 179,
+      "scheme" : "http://",
+      "ref" : "0x100.0.0.0",
+      "expectRef" : ""
+      },
+      {
+      "id" : 180,
+      "scheme" : "http://",
+      "ref" : "0.0x100.0.0",
+      "expectRef" : ""
+      },
+      {
+      "id" : 181,
+      "scheme" : "http://",
+      "ref" : "0.0.0x100.0",
+      "expectRef" : ""
+      },
+      {
+      "id" : 182,
+      "scheme" : "http://",
+      "ref" : "0.0.0.0x100",
+      "expectRef" : ""
+      },
+      {
+      "id" : 183,
+      "scheme" : "http://",
+      "ref" : "0.0.0x10000",
+      "expectRef" : ""
+      },
+      {
+      "id" : 184,
+      "scheme" : "http://",
+      "ref" : "0.0x1000000",
+      "expectRef" : ""
+      },
+      {
+      "id" : 185,
+      "scheme" : "http://",
+      "ref" : "0x100000000",
+      "expectRef" : ""
+      },
+      {
+      "id" : 186,
+      "scheme" : "http://",
+      "ref" : "0xFF.0",
+      "expectRef" : "255.0.0.0"
+      },
+      {
+      "id" : 187,
+      "scheme" : "http://",
+      "ref" : "0xFF.0.0",
+      "expectRef" : "255.0.0.0"
+      },
+      {
+      "id" : 188,
+      "scheme" : "http://",
+      "ref" : "0xFF.0.0.0",
+      "expectRef" : "255.0.0.0"
+      },
+      {
+      "id" : 189,
+      "scheme" : "http://",
+      "ref" : "0.0xFF.0.0",
+      "expectRef" : "0.255.0.0"
+      },
+      {
+      "id" : 190,
+      "scheme" : "http://",
+      "ref" : "0.0.0xFF.0",
+      "expectRef" : "0.0.255.0"
+      },
+      {
+      "id" : 191,
+      "scheme" : "http://",
+      "ref" : "0.0.0.0xFF",
+      "expectRef" : "0.0.0.255"
+      },
+      {
+      "id" : 192,
+      "scheme" : "http://",
+      "ref" : "0.0.0xFFFF",
+      "expectRef" : "0.0.255.255"
+      },
+      {
+      "id" : 193,
+      "scheme" : "http://",
+      "ref" : "0.0xFFFFFF",
+      "expectRef" : "0.255.255.255"
+      },
+      {
+      "id" : 194,
+      "scheme" : "http://",
+      "ref" : "0xFFFFFFFF",
+      "expectRef" : "255.255.255.255"
+      },
+      {
+      "id" : 195,
+      "scheme" : "http://",
+      "ref" : "276.256.0xf1a2.077777",
+      "expectRef" : ""
+      },
+      {
+      "id" : 196,
+      "scheme" : "http://",
+      "ref" : "192.168.0.257",
+      "expectRef" : ""
+      },
+      {
+      "id" : 197,
+      "scheme" : "http://",
+      "ref" : "192.168.0xa20001",
+      "expectRef" : ""
+      },
+      {
+      "id" : 198,
+      "scheme" : "http://",
+      "ref" : "192.015052000001",
+      "expectRef" : ""
+      },
+      {
+      "id" : 199,
+      "scheme" : "http://",
+      "ref" : "0X12C0a80001",
+      "expectRef" : ""
+      },
+      {
+      "id" : 200,
+      "scheme" : "http://",
+      "ref" : "276.1.2",
+      "expectRef" : ""
+      },
+      {
+      "id" : 201,
+      "scheme" : "http://",
+      "ref" : "192.168.0.1 hello",
+      "expectRef" : ""
+      },
+      {
+      "id" : 202,
+      "scheme" : "http://",
+      "ref" : "0000000000000300.0x00000000000000fF.00000000000000001",
+      "expectRef" : "192.255.0.1"
+      },
+      {
+      "id" : 203,
+      "scheme" : "http://",
+      "ref" : "0000000000000300.0xffffffffFFFFFFFF.3022415481470977",
+      "expectRef" : ""
+      },
+      {
+      "id" : 204,
+      "scheme" : "http://",
+      "ref" : "00000000000000000001",
+      "expectRef" : "0.0.0.1"
+      },
+      {
+      "id" : 205,
+      "scheme" : "http://",
+      "ref" : "0000000000000000100000000000000001",
+      "expectRef" : ""
+      },
+      {
+      "id" : 206,
+      "scheme" : "http://",
+      "ref" : "0.0.0.000000000000000000z",
+      "expectRef" : ""
+      },
+      {
+      "id" : 207,
+      "scheme" : "http://",
+      "ref" : "0.0.0.100000000000000000z",
+      "expectRef" : ""
+      },
+      {
+      "id" : 208,
+      "scheme" : "http://",
+      "ref" : "0.00.0x.0x0",
+      "expectRef" : "0.0.0.0"
+      }
+    ]
+  },
+  "group" : {
+    "name" : "ipv6",
+    "link" : "http://trac.webkit.org/browser/trunk/LayoutTests/fast/url/script-tests/ipv6.js",
+    "test": [
+      {
+      "id" : 209,
+      "scheme" : "http://",
+      "ref" : "[",
+      "expectRef" : ""
+      },
+      {
+      "id" : 210,
+      "scheme" : "http://",
+      "ref" : "[:",
+      "expectRef" : ""
+      },
+      {
+      "id" : 211,
+      "scheme" : "http://",
+      "ref" : "]",
+      "expectRef" : ""
+      },
+      {
+      "id" : 212,
+      "scheme" : "http://",
+      "ref" : ":]",
+      "expectRef" : ""
+      },
+      {
+      "id" : 213,
+      "scheme" : "http://",
+      "ref" : "[]",
+      "expectRef" : ""
+      },
+      {
+      "id" : 214,
+      "scheme" : "http://",
+      "ref" : "[:]",
+      "expectRef" : ""
+      },
+      {
+      "id" : 215,
+      "scheme" : "http://",
+      "ref" : "2001:db8::1",
+      "expectRef" : ""
+      },
+      {
+      "id" : 216,
+      "scheme" : "http://",
+      "ref" : "[2001:db8::1",
+      "expectRef" : ""
+      },
+      {
+      "id" : 217,
+      "scheme" : "http://",
+      "ref" : "2001:db8::1]",
+      "expectRef" : ""
+      },
+      {
+      "id" : 218,
+      "scheme" : "http://",
+      "ref" : "[::]",
+      "expectRef" : "[::]"
+      },
+      {
+      "id" : 219,
+      "scheme" : "http://",
+      "ref" : "[::1]",
+      "expectRef" : "[::1]"
+      },
+      {
+      "id" : 220,
+      "scheme" : "http://",
+      "ref" : "[1::]",
+      "expectRef" : "[1::]"
+      },
+      {
+      "id" : 221,
+      "scheme" : "http://",
+      "ref" : "[::192.168.0.1]",
+      "expectRef" : "[::c0a8:1]"
+      },
+      {
+      "id" : 222,
+      "scheme" : "http://",
+      "ref" : "[::ffff:192.168.0.1]",
+      "expectRef" : "[::ffff:c0a8:1]"
+      },
+      {
+      "id" : 223,
+      "scheme" : "http://",
+      "ref" : "[000:01:02:003:004:5:6:007]",
+      "expectRef" : "[0:1:2:3:4:5:6:7]"
+      },
+      {
+      "id" : 224,
+      "scheme" : "http://",
+      "ref" : "[A:b:c:DE:fF:0:1:aC]",
+      "expectRef" : "[a:b:c:de:ff:0:1:ac]"
+      },
+      {
+      "id" : 225,
+      "scheme" : "http://",
+      "ref" : "[1:0:0:2::3:0]",
+      "expectRef" : "[1::2:0:0:3:0]"
+      },
+      {
+      "id" : 226,
+      "scheme" : "http://",
+      "ref" : "[1::2:0:0:3:0]",
+      "expectRef" : "[1::2:0:0:3:0]"
+      },
+      {
+      "id" : 227,
+      "scheme" : "http://",
+      "ref" : "[::eeee:192.168.0.1]",
+      "expectRef" : ""
+      },
+      {
+      "id" : 228,
+      "scheme" : "http://",
+      "ref" : "[2001::192.168.0.1]",
+      "expectRef" : ""
+      },
+      {
+      "id" : 229,
+      "scheme" : "http://",
+      "ref" : "[1:2:192.168.0.1:5:6]",
+      "expectRef" : ""
+      },
+      {
+      "id" : 230,
+      "scheme" : "http://",
+      "ref" : "[::ffff:192.1.2]",
+      "expectRef" : "[::ffff:c001:2]"
+      },
+      {
+      "id" : 231,
+      "scheme" : "http://",
+      "ref" : "[::ffff:0xC0.0Xa8.0x0.0x1]",
+      "expectRef" : "[::ffff:c0a8:1]"
+      },
+      {
+      "id" : 232,
+      "scheme" : "http://",
+      "ref" : "[0:0::0:0:8]",
+      "expectRef" : "[::8]"
+      },
+      {
+      "id" : 233,
+      "scheme" : "http://",
+      "ref" : "[2001:db8::1]",
+      "expectRef" : "[2001:db8::1]"
+      },
+      {
+      "id" : 234,
+      "scheme" : "http://",
+      "ref" : "[2001::db8::1]",
+      "expectRef" : ""
+      },
+      {
+      "id" : 235,
+      "scheme" : "http://",
+      "ref" : "[2001:db8:::1]",
+      "expectRef" : ""
+      },
+      {
+      "id" : 236,
+      "scheme" : "http://",
+      "ref" : "[:::]",
+      "expectRef" : ""
+      },
+      {
+      "id" : 237,
+      "scheme" : "http://",
+      "ref" : "[2001::.com]",
+      "expectRef" : ""
+      },
+      {
+      "id" : 238,
+      "scheme" : "http://",
+      "ref" : "[::192.168.0.0.1]",
+      "expectRef" : ""
+      },
+      {
+      "id" : 239,
+      "scheme" : "http://",
+      "ref" : "[::ffff:192.168.0.0.1]",
+      "expectRef" : ""
+      },
+      {
+      "id" : 240,
+      "scheme" : "http://",
+      "ref" : "[1:2:3:4:5:6:7:8:9]",
+      "expectRef" : ""
+      },
+      {
+      "id" : 241,
+      "scheme" : "http://",
+      "ref" : "[0:0:0:0:0:0:0:192.168.0.1]",
+      "expectRef" : ""
+      },
+      {
+      "id" : 242,
+      "scheme" : "http://",
+      "ref" : "[1:2:3:4:5:6::192.168.0.1]",
+      "expectRef" : ""
+      },
+      {
+      "id" : 243,
+      "scheme" : "http://",
+      "ref" : "[1:2:3:4:5:6::8]",
+      "expectRef" : "[1:2:3:4:5:6:0:8]"
+      },
+      {
+      "id" : 244,
+      "scheme" : "http://",
+      "ref" : "[1:2:3:4:5:6:7:8:]",
+      "expectRef" : ""
+      },
+      {
+      "id" : 245,
+      "scheme" : "http://",
+      "ref" : "[1:2:3:4:5:6:192.168.0.1:]",
+      "expectRef" : ""
+      },
+      {
+      "id" : 246,
+      "scheme" : "http://",
+      "ref" : "[-1:2:3:4:5:6:7:8]",
+      "expectRef" : ""
+      },
+      {
+      "id" : 247,
+      "scheme" : "http://",
+      "ref" : "[1::%1]",
+      "expectRef" : ""
+      },
+      {
+      "id" : 248,
+      "scheme" : "http://",
+      "ref" : "[1::%eth0]",
+      "expectRef" : ""
+      },
+      {
+      "id" : 249,
+      "scheme" : "http://",
+      "ref" : "[1::%]",
+      "expectRef" : ""
+      },
+      {
+      "id" : 250,
+      "scheme" : "http://",
+      "ref" : "[%]",
+      "expectRef" : ""
+      },
+      {
+      "id" : 251,
+      "scheme" : "http://",
+      "ref" : "[::%:]",
+      "expectRef" : ""
+      },
+      {
+      "id" : 252,
+      "scheme" : "http://",
+      "ref" : "[:0:0::0:0:8]",
+      "expectRef" : ""
+      },
+      {
+      "id" : 253,
+      "scheme" : "http://",
+      "ref" : "[0:0::0:0:8:]",
+      "expectRef" : ""
+      },
+      {
+      "id" : 254,
+      "scheme" : "http://",
+      "ref" : "[:0:0::0:0:8:]",
+      "expectRef" : ""
+      },
+      {
+      "id" : 255,
+      "scheme" : "http://",
+      "ref" : "[::192.168..1]",
+      "expectRef" : ""
+      },
+      {
+      "id" : 256,
+      "scheme" : "http://",
+      "ref" : "[::1 hello]",
+      "expectRef" : ""
+      }
+    ]
+  },
+  "group" : {
+    "name" : "mailto",
+    "link" : "http://trac.webkit.org/browser/trunk/LayoutTests/fast/url/script-tests/mailto.js",
+    "test": [
+      {
+      "id" : 257,
+      "scheme" : "mailto:",
+      "ref" : "addr1",
+      "expectRef" : "addr1"
+      },
+      {
+      "id" : 258,
+      "scheme" : "mailto:",
+      "ref" : "addr1@foo.com",
+      "expectRef" : "addr1@foo.com"
+      },
+      {
+      "id" : 259,
+      "scheme" : "mailto:",
+      "ref" : "addr1 \t ",
+      "expectRef" : "addr1"
+      },
+      {
+      "id" : 260,
+      "scheme" : "mailto:",
+      "ref" : "addr1?to=jon",
+      "expectRef" : "addr1?to=jon"
+      },
+      {
+      "id" : 261,
+      "scheme" : "mailto:",
+      "ref" : "addr1,addr2",
+      "expectRef" : "addr1,addr2"
+      },
+      {
+      "id" : 262,
+      "scheme" : "mailto:",
+      "ref" : "addr1, addr2",
+      "expectRef" : "addr1, addr2"
+      },
+      {
+      "id" : 263,
+      "scheme" : "mailto:",
+      "ref" : "addr1%2caddr2",
+      "expectRef" : "addr1%2caddr2"
+      },
+      {
+      "id" : 264,
+      "scheme" : "mailto:",
+      "ref" : "\uD800\uDF00",
+      "expectRef" : "%F0%90%8C%80"
+      },
+      {
+      "id" : 265,
+      "scheme" : "mailto:",
+      "ref" : "addr1?",
+      "expectRef" : "addr1?"
+      }
+    ]
+  },
+  "group" : {
+    "name" : "path-url",
+    "link" : "http://trac.webkit.org/browser/trunk/LayoutTests/fast/url/script-tests/path-url.js",
+    "test": [
+      {
+      "id" : 266,
+      "ref" : "javascript:",
+      "expectRef" : "javascript:"
+      },
+      {
+      "id" : 267,
+      "ref" : "JavaScript:Foo",
+      "expectRef" : "javascript:Foo"
+      }
+    ]
+  },
+  "group" : {
+    "name" : "path",
+    "link" : "http://trac.webkit.org/browser/trunk/LayoutTests/fast/url/script-tests/path.js",
+    "test": [
+      {
+      "id" : 268,
+      "uri" : "http://www.example.com",
+      "ref" : "/././foo",
+      "expectRef" : "/foo"
+      },
+      {
+      "id" : 269,
+      "uri" : "http://www.example.com",
+      "ref" : "/./.foo",
+      "expectRef" : "/.foo"
+      },
+      {
+      "id" : 270,
+      "uri" : "http://www.example.com",
+      "ref" : "/foo/.",
+      "expectRef" : "/foo/"
+      },
+      {
+      "id" : 271,
+      "uri" : "http://www.example.com",
+      "ref" : "/foo/./",
+      "expectRef" : "/foo/"
+      },
+      {
+      "id" : 272,
+      "uri" : "http://www.example.com",
+      "ref" : "/foo/bar/..",
+      "expectRef" : "/foo/"
+      },
+      {
+      "id" : 273,
+      "uri" : "http://www.example.com",
+      "ref" : "/foo/bar/../",
+      "expectRef" : "/foo/"
+      },
+      {
+      "id" : 274,
+      "uri" : "http://www.example.com",
+      "ref" : "/foo/..bar",
+      "expectRef" : "/foo/..bar"
+      },
+      {
+      "id" : 275,
+      "uri" : "http://www.example.com",
+      "ref" : "/foo/bar/../ton",
+      "expectRef" : "/foo/ton"
+      },
+      {
+      "id" : 276,
+      "uri" : "http://www.example.com",
+      "ref" : "/foo/bar/../ton/../../a",
+      "expectRef" : "/a"
+      },
+      {
+      "id" : 277,
+      "uri" : "http://www.example.com",
+      "ref" : "/foo/../../..",
+      "expectRef" : "/"
+      },
+      {
+      "id" : 278,
+      "uri" : "http://www.example.com",
+      "ref" : "/foo/../../../ton",
+      "expectRef" : "/ton"
+      },
+      {
+      "id" : 279,
+      "uri" : "http://www.example.com",
+      "ref" : "/foo/%2e",
+      "expectRef" : "/foo/"
+      },
+      {
+      "id" : 280,
+      "uri" : "http://www.example.com",
+      "ref" : "/foo/%2e%2",
+      "expectRef" : "/foo/.%2"
+      },
+      {
+      "id" : 281,
+      "uri" : "http://www.example.com",
+      "ref" : "/foo/%2e./%2e%2e/.%2e/%2e.bar",
+      "expectRef" : "/..bar"
+      },
+      {
+      "id" : 282,
+      "uri" : "http://www.example.com",
+      "ref" : "////../..",
+      "expectRef" : "//"
+      },
+      {
+      "id" : 283,
+      "uri" : "http://www.example.com",
+      "ref" : "/foo/bar//../..",
+      "expectRef" : "/foo/"
+      },
+      {
+      "id" : 284,
+      "uri" : "http://www.example.com",
+      "ref" : "/foo/bar//..",
+      "expectRef" : "/foo/bar/"
+      },
+      {
+      "id" : 285,
+      "uri" : "http://www.example.com",
+      "ref" : "/foo/bar/..",
+      "expectRef" : "/foo/"
+      },
+      {
+      "id" : 286,
+      "uri" : "http://www.example.com",
+      "ref" : "/foo",
+      "expectRef" : "/foo"
+      },
+      {
+      "id" : 287,
+      "uri" : "http://www.example.com",
+      "ref" : "/%20foo",
+      "expectRef" : "/%20foo"
+      },
+      {
+      "id" : 288,
+      "uri" : "http://www.example.com",
+      "ref" : "/foo%",
+      "expectRef" : "/foo%"
+      },
+      {
+      "id" : 289,
+      "uri" : "http://www.example.com",
+      "ref" : "/foo%2",
+      "expectRef" : "/foo%2"
+      },
+      {
+      "id" : 290,
+      "uri" : "http://www.example.com",
+      "ref" : "/foo%2zbar",
+      "expectRef" : "/foo%2zbar"
+      },
+      {
+      "id" : 291,
+      "uri" : "http://www.example.com",
+      "ref" : "/foo%2\u00c2\u00a9zbar",
+      "expectRef" : "/foo%2%C3%82%C2%A9zbar"
+      },
+      {
+      "id" : 292,
+      "uri" : "http://www.example.com",
+      "ref" : "/foo%41%7a",
+      "expectRef" : "/fooAz"
+      },
+      {
+      "id" : 293,
+      "uri" : "http://www.example.com",
+      "ref" : "/foo\u0009\u0091%91",
+      "expectRef" : "/foo%09%C2%91%91"
+      },
+      {
+      "id" : 294,
+      "uri" : "http://www.example.com",
+      "ref" : "/foo%00%51",
+      "expectRef" : "/foo%00Q"
+      },
+      {
+      "id" : 295,
+      "uri" : "http://www.example.com",
+      "ref" : "/(%28:%3A%29)",
+      "expectRef" : "/(%28:%3A%29)"
+      },
+      {
+      "id" : 296,
+      "uri" : "http://www.example.com",
+      "ref" : "/%3A%3a%3C%3c",
+      "expectRef" : "/%3A%3a%3C%3c"
+      },
+      {
+      "id" : 297,
+      "uri" : "http://www.example.com",
+      "ref" : "/foo\tbar",
+      "expectRef" : "/foo%09bar"
+      },
+      {
+      "id" : 298,
+      "uri" : "http://www.example.com",
+      "ref" : "\\\\foo\\\\bar",
+      "expectRef" : "/foo/bar"
+      },
+      {
+      "id" : 299,
+      "uri" : "http://www.example.com",
+      "ref" : "/%7Ffp3%3Eju%3Dduvgw%3Dd",
+      "expectRef" : "/%7Ffp3%3Eju%3Dduvgw%3Dd"
+      },
+      {
+      "id" : 300,
+      "uri" : "http://www.example.com",
+      "ref" : "/@asdf%40",
+      "expectRef" : "/@asdf%40"
+      },
+      {
+      "id" : 301,
+      "uri" : "http://www.example.com",
+      "ref" : "/\u4f60\u597d\u4f60\u597d",
+      "expectRef" : "/%E4%BD%A0%E5%A5%BD%E4%BD%A0%E5%A5%BD"
+      },
+      {
+      "id" : 302,
+      "uri" : "http://www.example.com",
+      "ref" : "/\ufdd0zyx",
+      "expectRef" : "/%EF%BF%BDzyx"
+      },
+      {
+      "id" : 303,
+      "uri" : "http://www.example.com",
+      "ref" : "/\u2025/foo",
+      "expectRef" : "/%E2%80%A5/foo"
+      },
+      {
+      "id" : 304,
+      "uri" : "http://www.example.com",
+      "ref" : "/\uDEAD/foo",
+      "expectRef" : "/\uFFFD/foo"
+      },
+      {
+      "id" : 305,
+      "uri" : "http://www.example.com",
+      "ref" : "/\uFEFF/foo",
+      "expectRef" : "/%EF%BB%BF/foo"
+      },
+      {
+      "id" : 306,
+      "uri" : "http://www.example.com",
+      "ref" : "/\u202E/foo/\u202D/bar",
+      "expectRef" : "/%E2%80%AE/foo/%E2%80%AD/bar"
+      },
+      {
+      "id" : 307,
+      "uri" : "http://www.example.com",
+      "ref" : "\uFF0Ffoo/",
+      "expectRef" : "/foo/"
+      }
+    ]
+  },
+  "group" : {
+    "name" : "port",
+    "link" : "http://trac.webkit.org/browser/trunk/LayoutTests/fast/url/script-tests/port.js",
+    "test": [
+      {
+      "id" : 308,
+      "uri" : "http://www.example.com:",
+      "ref" : "as df",
+      "expectRef" : ":as%20df"
+      },
+      {
+      "id" : 309,
+      "uri" : "http://www.example.com:",
+      "ref" : "-2",
+      "expectRef" : ":-2"
+      },
+      {
+      "id" : 310,
+      "uri" : "http://www.example.com:",
+      "ref" : "80",
+      "expectRef" : ""
+      },
+      {
+      "id" : 311,
+      "uri" : "http://www.example.com:",
+      "ref" : "8080",
+      "expectRef" : ":8080"
+      },
+      {
+      "id" : 312,
+      "uri" : "http://www.example.com:",
+      "ref" : "",
+      "expectRef" : ""
+      },
+      {
+      "id" : 313,
+      "uri" : "http://www.example.com:",
+      "ref" : "\u1369",
+      "expectRef" : ":%E1%8D%A9"
+      },
+      {
+      "id" : 314,
+      "uri" : "http://www.example.com:",
+      "ref" : "\uD835\uDFD6",
+      "expectRef" : ":%F0%9D%9F%96"
+      }
+    ]
+  },
+  "group" : {
+    "name" : "query",
+    "link" : "http://trac.webkit.org/browser/trunk/LayoutTests/fast/url/script-tests/query.js",
+    "test": [
+      {
+      "id" : 315,
+      "uri" : "http://www.example.com/?",
+      "ref" : "foo=bar",
+      "expectRef" : "foo=bar"
+      },
+      {
+      "id" : 316,
+      "uri" : "http://www.example.com/?",
+      "ref" : "as?df",
+      "expectRef" : "as?df"
+      },
+      {
+      "id" : 317,
+      "uri" : "http://www.example.com/?",
+      "ref" : "\\%02hello%7f bye",
+      "expectRef" : "%02hello%7F%20bye"
+      },
+      {
+      "id" : 318,
+      "uri" : "http://www.example.com/?",
+      "ref" : "%40%41123",
+      "expectRef" : "%40%41123"
+      },
+      {
+      "id" : 319,
+      "uri" : "http://www.example.com/?",
+      "ref" : "q=\u4F60\u597D",
+      "expectRef" : "q=%26%2320320%3B%26%2322909%3B"
+      },
+      {
+      "id" : 320,
+      "uri" : "http://www.example.com/?",
+      "ref" : "q=\\ud800\\ud800",
+      "expectRef" : "q=%26%2355296%3B%26%2355296%3B"
+      },
+      {
+      "id" : 321,
+      "uri" : "http://www.example.com/?",
+      "ref" : "q=<asdf>",
+      "expectRef" : "q=%3Casdf%3E"
+      },
+      {
+      "id" : 322,
+      "uri" : "http://www.example.com/?",
+      "ref" : "q=\"asdf\"",
+      "expectRef" : "q=%22asdf%22"
+      }
+    ]
+  },
+  "group" : {
+    "name" : "relative-unix",
+    "link" : "http://trac.webkit.org/browser/trunk/LayoutTests/fast/url/script-tests/relative-unix.js",
+    "test": [
+      {
+          "id" : 323,
+          "base" : "http://host/a",
+          "ref" : "\\\\\\\\Another\\\\path",
+          "expectRef" : "http://another/path"
+      },
+      {
+          "id" : 324,
+          "base" : "http://host/a",
+          "ref" : "/c:\\\\foo",
+          "expectRef" : "http://host/c:/foo"
+      },
+      {
+          "id" : 325,
+          "base" : "http://host/a",
+          "ref" : "//c:\\\\foo",
+          "expectRef" : "http://c/foo"
+      }
+    ]
+  },
+  "group" : {
+    "name" : "relative-win",
+    "link" : "http://trac.webkit.org/browser/trunk/LayoutTests/fast/url/script-tests/relative-win.js",
+    "test": [
+      {
+          "id" : 326,
+          "base" : "file:///C:/foo",
+          "ref" : "http://host/",
+          "expectRef" : "http://host/"
+      },
+      {
+          "id" : 327,
+          "base" : "file:///C:/foo",
+          "ref" : "bar",
+          "expectRef" : "file:///C:/bar"
+      },
+      {
+          "id" : 328,
+          "base" : "file:///C:/foo",
+          "ref" : "../../../bar.html",
+          "expectRef" : "file:///C:/bar.html"
+      },
+      {
+          "id" : 329,
+          "base" : "file:///C:/foo",
+          "ref" : "/../bar.html",
+          "expectRef" : "file:///C:/bar.html"
+      },
+      {
+          "id" : 330,
+          "base" : "http://host/a",
+          "ref" : "\\\\\\\\another\\\\path",
+          "expectRef" : ""
+      },
+      {
+          "id" : 331,
+          "base" : "file:///C:/something",
+          "ref" : "//c:/foo",
+          "expectRef" : "file:///C:/foo"
+      },
+      {
+          "id" : 332,
+          "base" : "file:///C:/something",
+          "ref" : "//localhost/c:/foo",
+          "expectRef" : "file:///C:/foo"
+      },
+      {
+          "id" : 333,
+          "base" : "file:///C:/foo",
+          "ref" : "c:",
+          "expectRef" : ""
+      },
+      {
+          "id" : 334,
+          "base" : "file:///C:/foo",
+          "ref" : "c:/foo",
+          "expectRef" : ""
+      },
+      {
+          "id" : 335,
+          "base" : "http://host/a",
+          "ref" : "c:\\\\foo",
+          "expectRef" : ""
+      },
+      {
+          "id" : 336,
+          "base" : "file:///C:/foo",
+          "ref" : "/z:/bar",
+          "expectRef" : "file:///Z:/bar"
+      },
+      {
+          "id" : 337,
+          "base" : "file:///C:/foo",
+          "ref" : "/bar",
+          "expectRef" : "file:///C:/bar"
+      },
+      {
+          "id" : 338,
+          "base" : "file://localhost/C:/foo",
+          "ref" : "/bar",
+          "expectRef" : "file://localhost/C:/bar"
+      },
+      {
+          "id" : 339,
+          "base" : "file:///C:/foo/com/",
+          "ref" : "/bar",
+          "expectRef" : "file:///C:/bar"
+      },
+      {
+          "id" : 340,
+          "base" : "file:///C:/something",
+          "ref" : "//somehost/path",
+          "expectRef" : "file://somehost/path"
+      },
+      {
+          "id" : 341,
+          "base" : "file:///C:/something",
+          "ref" : "/\\\\//somehost/path",
+          "expectRef" : "file://somehost/path"
+      }
+    ]
+  },
+  "group" : {
+    "name" : "relative",
+    "link" : "http://trac.webkit.org/browser/trunk/LayoutTests/fast/url/script-tests/relative.js",
+    "test": [
+      {
+          "id" : 342,
+          "base" : "http://host/a",
+          "ref" : "http://another/",
+          "expectRef" : "http://another/"
+      },
+      {
+          "id" : 343,
+          "base" : "http://host/a",
+          "ref" : "http:////another/",
+          "expectRef" : "http://another/"
+      },
+      {
+          "id" : 344,
+          "base" : "http://foo/bar",
+          "ref" : "",
+          "expectRef" : "http://foo/bar"
+      },
+      {
+          "id" : 345,
+          "base" : "http://foo/bar#ref",
+          "ref" : "",
+          "expectRef" : "http://foo/bar"
+      },
+      {
+          "id" : 346,
+          "base" : "http://foo/bar#",
+          "ref" : "",
+          "expectRef" : "http://foo/bar"
+      },
+      {
+          "id" : 347,
+          "base" : "http://foo/bar",
+          "ref" : "  another  ",
+          "expectRef" : "http://foo/another"
+      },
+      {
+          "id" : 348,
+          "base" : "http://foo/bar",
+          "ref" : "  .  ",
+          "expectRef" : "http://foo/"
+      },
+      {
+          "id" : 349,
+          "base" : "http://foo/bar",
+          "ref" : " \t ",
+          "expectRef" : "http://foo/bar"
+      },
+      {
+          "id" : 350,
+          "base" : "http://host/a",
+          "ref" : "http:path",
+          "expectRef" : "http://host/path"
+      },
+      {
+          "id" : 351,
+          "base" : "http://host/a/",
+          "ref" : "http:path",
+          "expectRef" : "http://host/a/path"
+      },
+      {
+          "id" : 352,
+          "base" : "http://host/a",
+          "ref" : "http:/path",
+          "expectRef" : "http://host/path"
+      },
+      {
+          "id" : 353,
+          "base" : "http://host/a",
+          "ref" : "HTTP:/path",
+          "expectRef" : "http://host/path"
+      },
+      {
+          "id" : 354,
+          "base" : "http://host/a",
+          "ref" : "https:host2",
+          "expectRef" : "https://host2/"
+      },
+      {
+          "id" : 355,
+          "base" : "http://host/a",
+          "ref" : "htto:/host2",
+          "expectRef" : "htto:/host2"
+      },
+      {
+          "id" : 356,
+          "base" : "http://host/a",
+          "ref" : "/b/c/d",
+          "expectRef" : "http://host/b/c/d"
+      },
+      {
+          "id" : 357,
+          "base" : "http://host/a",
+          "ref" : "\\\\b\\\\c\\\\d",
+          "expectRef" : "http://host/b/c/d"
+      },
+      {
+          "id" : 358,
+          "base" : "http://host/a",
+          "ref" : "/b/../c",
+          "expectRef" : "http://host/c"
+      },
+      {
+          "id" : 359,
+          "base" : "http://host/a?b#c",
+          "ref" : "/b/../c",
+          "expectRef" : "http://host/c"
+      },
+      {
+          "id" : 360,
+          "base" : "http://host/a",
+          "ref" : "\\\\b/../c?x#y",
+          "expectRef" : "http://host/c?x#y"
+      },
+      {
+          "id" : 361,
+          "base" : "http://host/a?b#c",
+          "ref" : "/b/../c?x#y",
+          "expectRef" : "http://host/c?x#y"
+      },
+      {
+          "id" : 362,
+          "base" : "http://host/a",
+          "ref" : "b",
+          "expectRef" : "http://host/b"
+      },
+      {
+          "id" : 363,
+          "base" : "http://host/a",
+          "ref" : "bc/de",
+          "expectRef" : "http://host/bc/de"
+      },
+      {
+          "id" : 364,
+          "base" : "http://host/a/",
+          "ref" : "bc/de?query#ref",
+          "expectRef" : "http://host/a/bc/de?query#ref"
+      },
+      {
+          "id" : 365,
+          "base" : "http://host/a/",
+          "ref" : ".",
+          "expectRef" : "http://host/a/"
+      },
+      {
+          "id" : 366,
+          "base" : "http://host/a/",
+          "ref" : "..",
+          "expectRef" : "http://host/"
+      },
+      {
+          "id" : 367,
+          "base" : "http://host/a/",
+          "ref" : "./..",
+          "expectRef" : "http://host/"
+      },
+      {
+          "id" : 368,
+          "base" : "http://host/a/",
+          "ref" : "../.",
+          "expectRef" : "http://host/"
+      },
+      {
+          "id" : 369,
+          "base" : "http://host/a/",
+          "ref" : "././.",
+          "expectRef" : "http://host/a/"
+      },
+      {
+          "id" : 370,
+          "base" : "http://host/a?query#ref",
+          "ref" : "../../../foo",
+          "expectRef" : "http://host/foo"
+      },
+      {
+          "id" : 371,
+          "base" : "http://host/a",
+          "ref" : "?foo=bar",
+          "expectRef" : "http://host/a?foo=bar"
+      },
+      {
+          "id" : 372,
+          "base" : "http://host/a?x=y#z",
+          "ref" : "?",
+          "expectRef" : "http://host/a?"
+      },
+      {
+          "id" : 373,
+          "base" : "http://host/a?x=y#z",
+          "ref" : "?foo=bar#com",
+          "expectRef" : "http://host/a?foo=bar#com"
+      },
+      {
+          "id" : 374,
+          "base" : "http://host/a",
+          "ref" : "#ref",
+          "expectRef" : "http://host/a#ref"
+      },
+      {
+          "id" : 375,
+          "base" : "http://host/a#b",
+          "ref" : "#",
+          "expectRef" : "http://host/a#"
+      },
+      {
+          "id" : 376,
+          "base" : "http://host/a?foo=bar#hello",
+          "ref" : "#bye",
+          "expectRef" : "http://host/a?foo=bar#bye"
+      },
+      {
+          "id" : 377,
+          "base" : "data:foobar",
+          "ref" : "baz.html",
+          "expectRef" : ""
+      },
+      {
+          "id" : 378,
+          "base" : "data:foobar",
+          "ref" : "data:baz",
+          "expectRef" : "data:baz"
+      },
+      {
+          "id" : 379,
+          "base" : "data:foobar",
+          "ref" : "data:/base",
+          "expectRef" : "data:/base"
+      },
+      {
+          "id" : 380,
+          "base" : "data:foobar",
+          "ref" : "http://host/",
+          "expectRef" : "http://host/"
+      },
+      {
+          "id" : 381,
+          "base" : "data:foobar",
+          "ref" : "http:host",
+          "expectRef" : "http://host/"
+      },
+      {
+          "id" : 382,
+          "base" : "http://foo/bar",
+          "ref" : "./asd:fgh",
+          "expectRef" : "http://foo/asd:fgh"
+      },
+      {
+          "id" : 383,
+          "base" : "http://foo/bar",
+          "ref" : ":foo",
+          "expectRef" : "http://foo/:foo"
+      },
+      {
+          "id" : 384,
+          "base" : "http://foo/bar",
+          "ref" : " hello world",
+          "expectRef" : "http://foo/hello%20world"
+      },
+      {
+          "id" : 385,
+          "base" : "data:asdf",
+          "ref" : ":foo",
+          "expectRef" : ""
+      },
+      {
+          "id" : 386,
+          "base" : "http://host/a",
+          "ref" : ";foo",
+          "expectRef" : "http://host/;foo"
+      },
+      {
+          "id" : 387,
+          "base" : "http://host/a;",
+          "ref" : ";foo",
+          "expectRef" : "http://host/;foo"
+      },
+      {
+          "id" : 388,
+          "base" : "http://host/a",
+          "ref" : ";/../bar",
+          "expectRef" : "http://host/bar"
+      },
+      {
+          "id" : 389,
+          "base" : "http://host/a",
+          "ref" : "//another",
+          "expectRef" : "http://another/"
+      },
+      {
+          "id" : 390,
+          "base" : "http://host/a",
+          "ref" : "//another/path?query#ref",
+          "expectRef" : "http://another/path?query#ref"
+      },
+      {
+          "id" : 391,
+          "base" : "http://host/a",
+          "ref" : "///another/path",
+          "expectRef" : "http://another/path"
+      },
+      {
+          "id" : 392,
+          "base" : "http://host/a",
+          "ref" : "//Another\\\\path",
+          "expectRef" : "http://another/path"
+      },
+      {
+          "id" : 393,
+          "base" : "http://host/a",
+          "ref" : "//",
+          "expectRef" : "http:"
+      },
+      {
+          "id" : 394,
+          "base" : "http://host/a",
+          "ref" : "\\\\/another/path",
+          "expectRef" : "http://another/path"
+      },
+      {
+          "id" : 395,
+          "base" : "http://host/a",
+          "ref" : "/\\\\Another\\\\path",
+          "expectRef" : "http://another/path"
+      }
+    ]
+  },
+  "group" : {
+    "name" : "scheme",
+    "link" : "http://trac.webkit.org/browser/trunk/LayoutTests/fast/url/script-tests/scheme.js",
+    "test": [
+      {
+      "id" : 396,
+      "scheme" : "http",
+      "expectScheme" : "http"
+      },
+      {
+      "id" : 397,
+      "scheme" : "HTTP",
+      "expectScheme" : "http"
+      }
+    ]
+  },
+  "group" : {
+    "name" : "segments-from-data-url",
+    "link" : "http://trac.webkit.org/browser/trunk/LayoutTests/fast/url/script-tests/segments-from-data-url.js",
+    "test": [
+      {
+          "id" : 398,
+          "ref" : "http://user:pass@foo:21/bar;par?b#c",
+          "base" : "data:text/plain,baseURL",
+          "expectScheme" : "http:",
+          "expectHost" : "foo",
+          "expectPort" : "21",
+          "expectPath" : "/bar;par",
+          "expectQuery" : "?b",
+          "expectFragment" : "#c"
+      },
+      {
+          "id" : 399,
+          "ref" : "http:foo.com",
+          "base" : "data:text/plain,baseURL",
+          "expectScheme" : "http:",
+          "expectHost" : "foo.com",
+          "expectPort" : "0",
+          "expectPath" : "/",
+          "expectQuery" : "",
+          "expectFragment" : ""
+      },
+      {
+          "id" : 400,
+          "ref" : "\\t   :foo.com   \\n",
+          "base" : "data:text/plain,baseURL",
+          "expectScheme" : ":",
+          "expectHost" : "",
+          "expectPort" : "0",
+          "expectPath" : "",
+          "expectQuery" : "",
+          "expectFragment" : ""
+      },
+      {
+          "id" : 401,
+          "ref" : " foo.com  ",
+          "base" : "data:text/plain,baseURL",
+          "expectScheme" : ":",
+          "expectHost" : "",
+          "expectPort" : "0",
+          "expectPath" : "",
+          "expectQuery" : "",
+          "expectFragment" : ""
+      },
+      {
+          "id" : 402,
+          "ref" : "a:\\t foo.com",
+          "base" : "data:text/plain,baseURL",
+          "expectScheme" : "a:",
+          "expectHost" : "",
+          "expectPort" : "0",
+          "expectPath" : " foo.com",
+          "expectQuery" : "",
+          "expectFragment" : ""
+      },
+      {
+          "id" : 403,
+          "ref" : "http://f:21/ b ? d # e ",
+          "base" : "data:text/plain,baseURL",
+          "expectScheme" : "http:",
+          "expectHost" : "f",
+          "expectPort" : "21",
+          "expectPath" : "/%20b%20",
+          "expectQuery" : "?%20d%20",
+          "expectFragment" : "# e"
+      },
+      {
+          "id" : 404,
+          "ref" : "http://f:/c",
+          "base" : "data:text/plain,baseURL",
+          "expectScheme" : "http:",
+          "expectHost" : "f",
+          "expectPort" : "0",
+          "expectPath" : "/c",
+          "expectQuery" : "",
+          "expectFragment" : ""
+      },
+      {
+          "id" : 405,
+          "ref" : "http://f:0/c",
+          "base" : "data:text/plain,baseURL",
+          "expectScheme" : "http:",
+          "expectHost" : "f",
+          "expectPort" : "0",
+          "expectPath" : "/c",
+          "expectQuery" : "",
+          "expectFragment" : ""
+      },
+      {
+          "id" : 406,
+          "ref" : "http://f:00000000000000/c",
+          "base" : "data:text/plain,baseURL",
+          "expectScheme" : "http:",
+          "expectHost" : "f",
+          "expectPort" : "0",
+          "expectPath" : "/c",
+          "expectQuery" : "",
+          "expectFragment" : ""
+      },
+      {
+          "id" : 407,
+          "ref" : "http://f:00000000000000000000080/c",
+          "base" : "data:text/plain,baseURL",
+          "expectScheme" : "http:",
+          "expectHost" : "f",
+          "expectPort" : "0",
+          "expectPath" : "/c",
+          "expectQuery" : "",
+          "expectFragment" : ""
+      },
+      {
+          "id" : 408,
+          "ref" : "http://f:b/c",
+          "base" : "data:text/plain,baseURL",
+          "expectScheme" : ":",
+          "expectHost" : "",
+          "expectPort" : "0",
+          "expectPath" : "",
+          "expectQuery" : "",
+          "expectFragment" : ""
+      },
+      {
+          "id" : 409,
+          "ref" : "http://f: /c",
+          "base" : "data:text/plain,baseURL",
+          "expectScheme" : ":",
+          "expectHost" : "",
+          "expectPort" : "0",
+          "expectPath" : "",
+          "expectQuery" : "",
+          "expectFragment" : ""
+      },
+      {
+          "id" : 410,
+          "ref" : "http://f:\\n/c",
+          "base" : "data:text/plain,baseURL",
+          "expectScheme" : ":",
+          "expectHost" : "",
+          "expectPort" : "0",
+          "expectPath" : "",
+          "expectQuery" : "",
+          "expectFragment" : ""
+      },
+      {
+          "id" : 411,
+          "ref" : "http://f:fifty-two/c",
+          "base" : "data:text/plain,baseURL",
+          "expectScheme" : ":",
+          "expectHost" : "",
+          "expectPort" : "0",
+          "expectPath" : "",
+          "expectQuery" : "",
+          "expectFragment" : ""
+      },
+      {
+          "id" : 412,
+          "ref" : "http://f:999999/c",
+          "base" : "data:text/plain,baseURL",
+          "expectScheme" : ":",
+          "expectHost" : "",
+          "expectPort" : "0",
+          "expectPath" : "",
+          "expectQuery" : "",
+          "expectFragment" : ""
+      },
+      {
+          "id" : 413,
+          "ref" : "http://f: 21 / b ? d # e ",
+          "base" : "data:text/plain,baseURL",
+          "expectScheme" : ":",
+          "expectHost" : "",
+          "expectPort" : "0",
+          "expectPath" : "",
+          "expectQuery" : "",
+          "expectFragment" : ""
+      },
+      {
+          "id" : 414,
+          "ref" : "",
+          "base" : "data:text/plain,baseURL",
+          "expectScheme" : "data:",
+          "expectHost" : "",
+          "expectPort" : "0",
+          "expectPath" : "text/plain,baseURL",
+          "expectQuery" : "",
+          "expectFragment" : ""
+      },
+      {
+          "id" : 415,
+          "ref" : "  \\t",
+          "base" : "data:text/plain,baseURL",
+          "expectScheme" : "data:",
+          "expectHost" : "",
+          "expectPort" : "0",
+          "expectPath" : "text/plain,baseURL",
+          "expectQuery" : "",
+          "expectFragment" : ""
+      },
+      {
+          "id" : 416,
+          "ref" : ":foo.com/",
+          "base" : "data:text/plain,baseURL",
+          "expectScheme" : ":",
+          "expectHost" : "",
+          "expectPort" : "0",
+          "expectPath" : "",
+          "expectQuery" : "",
+          "expectFragment" : ""
+      },
+      {
+          "id" : 417,
+          "ref" : ":foo.com\\\\",
+          "base" : "data:text/plain,baseURL",
+          "expectScheme" : ":",
+          "expectHost" : "",
+          "expectPort" : "0",
+          "expectPath" : "",
+          "expectQuery" : "",
+          "expectFragment" : ""
+      },
+      {
+          "id" : 418,
+          "ref" : ":",
+          "base" : "data:text/plain,baseURL",
+          "expectScheme" : ":",
+          "expectHost" : "",
+          "expectPort" : "0",
+          "expectPath" : "",
+          "expectQuery" : "",
+          "expectFragment" : ""
+      },
+      {
+          "id" : 419,
+          "ref" : ":a",
+          "base" : "data:text/plain,baseURL",
+          "expectScheme" : ":",
+          "expectHost" : "",
+          "expectPort" : "0",
+          "expectPath" : "",
+          "expectQuery" : "",
+          "expectFragment" : ""
+      },
+      {
+          "id" : 420,
+          "ref" : ":/",
+          "base" : "data:text/plain,baseURL",
+          "expectScheme" : ":",
+          "expectHost" : "",
+          "expectPort" : "0",
+          "expectPath" : "",
+          "expectQuery" : "",
+          "expectFragment" : ""
+      },
+      {
+          "id" : 421,
+          "ref" : ":\\\\",
+          "base" : "data:text/plain,baseURL",
+          "expectScheme" : ":",
+          "expectHost" : "",
+          "expectPort" : "0",
+          "expectPath" : "",
+          "expectQuery" : "",
+          "expectFragment" : ""
+      },
+      {
+          "id" : 422,
+          "ref" : ":#",
+          "base" : "data:text/plain,baseURL",
+          "expectScheme" : ":",
+          "expectHost" : "",
+          "expectPort" : "0",
+          "expectPath" : "",
+          "expectQuery" : "",
+          "expectFragment" : ""
+      },
+      {
+          "id" : 423,
+          "ref" : "#",
+          "base" : "data:text/plain,baseURL",
+          "expectScheme" : ":",
+          "expectHost" : "",
+          "expectPort" : "0",
+          "expectPath" : "",
+          "expectQuery" : "",
+          "expectFragment" : ""
+      },
+      {
+          "id" : 424,
+          "ref" : "#/",
+          "base" : "data:text/plain,baseURL",
+          "expectScheme" : ":",
+          "expectHost" : "",
+          "expectPort" : "0",
+          "expectPath" : "",
+          "expectQuery" : "",
+          "expectFragment" : ""
+      },
+      {
+          "id" : 425,
+          "ref" : "#\\\\",
+          "base" : "data:text/plain,baseURL",
+          "expectScheme" : ":",
+          "expectHost" : "",
+          "expectPort" : "0",
+          "expectPath" : "",
+          "expectQuery" : "",
+          "expectFragment" : ""
+      },
+      {
+          "id" : 426,
+          "ref" : "#;?",
+          "base" : "data:text/plain,baseURL",
+          "expectScheme" : ":",
+          "expectHost" : "",
+          "expectPort" : "0",
+          "expectPath" : "",
+          "expectQuery" : "",
+          "expectFragment" : ""
+      },
+      {
+          "id" : 427,
+          "ref" : "?",
+          "base" : "data:text/plain,baseURL",
+          "expectScheme" : ":",
+          "expectHost" : "",
+          "expectPort" : "0",
+          "expectPath" : "",
+          "expectQuery" : "",
+          "expectFragment" : ""
+      },
+      {
+          "id" : 428,
+          "ref" : "/",
+          "base" : "data:text/plain,baseURL",
+          "expectScheme" : ":",
+          "expectHost" : "",
+          "expectPort" : "0",
+          "expectPath" : "",
+          "expectQuery" : "",
+          "expectFragment" : ""
+      },
+      {
+          "id" : 429,
+          "ref" : ":23",
+          "base" : "data:text/plain,baseURL",
+          "expectScheme" : ":",
+          "expectHost" : "",
+          "expectPort" : "0",
+          "expectPath" : "",
+          "expectQuery" : "",
+          "expectFragment" : ""
+      },
+      {
+          "id" : 430,
+          "ref" : "/:23",
+          "base" : "data:text/plain,baseURL",
+          "expectScheme" : "data:",
+          "expectHost" : "",
+          "expectPort" : "0",
+          "expectPath" : "/:23",
+          "expectQuery" : "",
+          "expectFragment" : ""
+      },
+      {
+          "id" : 431,
+          "ref" : "//",
+          "base" : "data:text/plain,baseURL",
+          "expectScheme" : ":",
+          "expectHost" : "",
+          "expectPort" : "0",
+          "expectPath" : "",
+          "expectQuery" : "",
+          "expectFragment" : ""
+      },
+      {
+          "id" : 432,
+          "ref" : "::",
+          "base" : "data:text/plain,baseURL",
+          "expectScheme" : ":",
+          "expectHost" : "",
+          "expectPort" : "0",
+          "expectPath" : "",
+          "expectQuery" : "",
+          "expectFragment" : ""
+      },
+      {
+          "id" : 433,
+          "ref" : "::23",
+          "base" : "data:text/plain,baseURL",
+          "expectScheme" : ":",
+          "expectHost" : "",
+          "expectPort" : "0",
+          "expectPath" : "",
+          "expectQuery" : "",
+          "expectFragment" : ""
+      },
+      {
+          "id" : 434,
+          "ref" : "foo://",
+          "base" : "data:text/plain,baseURL",
+          "expectScheme" : "foo:",
+          "expectHost" : "",
+          "expectPort" : "0",
+          "expectPath" : "//",
+          "expectQuery" : "",
+          "expectFragment" : ""
+      },
+      {
+          "id" : 435,
+          "ref" : "http://a:b@c:29/d",
+          "base" : "data:text/plain,baseURL",
+          "expectScheme" : "http:",
+          "expectHost" : "c",
+          "expectPort" : "29",
+          "expectPath" : "/d",
+          "expectQuery" : "",
+          "expectFragment" : ""
+      },
+      {
+          "id" : 436,
+          "ref" : "http::@c:29",
+          "base" : "data:text/plain,baseURL",
+          "expectScheme" : "http:",
+          "expectHost" : "c",
+          "expectPort" : "29",
+          "expectPath" : "/",
+          "expectQuery" : "",
+          "expectFragment" : ""
+      },
+      {
+          "id" : 437,
+          "ref" : "http://&a:foo(b]c@d:2/",
+          "base" : "data:text/plain,baseURL",
+          "expectScheme" : "http:",
+          "expectHost" : "d",
+          "expectPort" : "2",
+          "expectPath" : "/",
+          "expectQuery" : "",
+          "expectFragment" : ""
+      },
+      {
+          "id" : 438,
+          "ref" : "http://::@c@d:2",
+          "base" : "data:text/plain,baseURL",
+          "expectScheme" : "http:",
+          "expectHost" : "d",
+          "expectPort" : "2",
+          "expectPath" : "/",
+          "expectQuery" : "",
+          "expectFragment" : ""
+      },
+      {
+          "id" : 439,
+          "ref" : "http://foo.com:b@d/",
+          "base" : "data:text/plain,baseURL",
+          "expectScheme" : "http:",
+          "expectHost" : "d",
+          "expectPort" : "0",
+          "expectPath" : "/",
+          "expectQuery" : "",
+          "expectFragment" : ""
+      },
+      {
+          "id" : 440,
+          "ref" : "http://foo.com/\\\\@",
+          "base" : "data:text/plain,baseURL",
+          "expectScheme" : "http:",
+          "expectHost" : "foo.com",
+          "expectPort" : "0",
+          "expectPath" : "//@",
+          "expectQuery" : "",
+          "expectFragment" : ""
+      },
+      {
+          "id" : 441,
+          "ref" : "http:\\\\\\\\foo.com\\\\",
+          "base" : "data:text/plain,baseURL",
+          "expectScheme" : "http:",
+          "expectHost" : "foo.com",
+          "expectPort" : "0",
+          "expectPath" : "/",
+          "expectQuery" : "",
+          "expectFragment" : ""
+      },
+      {
+          "id" : 442,
+          "ref" : "http:\\\\\\\\a\\\\b:c\\\\d@foo.com\\\\",
+          "base" : "data:text/plain,baseURL",
+          "expectScheme" : "http:",
+          "expectHost" : "a",
+          "expectPort" : "0",
+          "expectPath" : "/b:c/d@foo.com/",
+          "expectQuery" : "",
+          "expectFragment" : ""
+      },
+      {
+          "id" : 443,
+          "ref" : "foo:/",
+          "base" : "data:text/plain,baseURL",
+          "expectScheme" : "foo:",
+          "expectHost" : "",
+          "expectPort" : "0",
+          "expectPath" : "/",
+          "expectQuery" : "",
+          "expectFragment" : ""
+      },
+      {
+          "id" : 444,
+          "ref" : "foo:/bar.com/",
+          "base" : "data:text/plain,baseURL",
+          "expectScheme" : "foo:",
+          "expectHost" : "",
+          "expectPort" : "0",
+          "expectPath" : "/bar.com/",
+          "expectQuery" : "",
+          "expectFragment" : ""
+      },
+      {
+          "id" : 445,
+          "ref" : "foo://///////",
+          "base" : "data:text/plain,baseURL",
+          "expectScheme" : "foo:",
+          "expectHost" : "",
+          "expectPort" : "0",
+          "expectPath" : "/////////",
+          "expectQuery" : "",
+          "expectFragment" : ""
+      },
+      {
+          "id" : 446,
+          "ref" : "foo://///////bar.com/",
+          "base" : "data:text/plain,baseURL",
+          "expectScheme" : "foo:",
+          "expectHost" : "",
+          "expectPort" : "0",
+          "expectPath" : "/////////bar.com/",
+          "expectQuery" : "",
+          "expectFragment" : ""
+      },
+      {
+          "id" : 447,
+          "ref" : "foo:////://///",
+          "base" : "data:text/plain,baseURL",
+          "expectScheme" : "foo:",
+          "expectHost" : "",
+          "expectPort" : "0",
+          "expectPath" : "////://///",
+          "expectQuery" : "",
+          "expectFragment" : ""
+      },
+      {
+          "id" : 448,
+          "ref" : "c:/foo",
+          "base" : "data:text/plain,baseURL",
+          "expectScheme" : "c:",
+          "expectHost" : "",
+          "expectPort" : "0",
+          "expectPath" : "/foo",
+          "expectQuery" : "",
+          "expectFragment" : ""
+      },
+      {
+          "id" : 449,
+          "ref" : "//foo/bar",
+          "base" : "data:text/plain,baseURL",
+          "expectScheme" : ":",
+          "expectHost" : "",
+          "expectPort" : "0",
+          "expectPath" : "",
+          "expectQuery" : "",
+          "expectFragment" : ""
+      },
+      {
+          "id" : 450,
+          "ref" : "http://foo/path;a??e#f#g",
+          "base" : "data:text/plain,baseURL",
+          "expectScheme" : "http:",
+          "expectHost" : "foo",
+          "expectPort" : "0",
+          "expectPath" : "/path;a",
+          "expectQuery" : "??e",
+          "expectFragment" : "#f#g"
+      },
+      {
+          "id" : 451,
+          "ref" : "http://foo/abcd?efgh?ijkl",
+          "base" : "data:text/plain,baseURL",
+          "expectScheme" : "http:",
+          "expectHost" : "foo",
+          "expectPort" : "0",
+          "expectPath" : "/abcd",
+          "expectQuery" : "?efgh?ijkl",
+          "expectFragment" : ""
+      },
+      {
+          "id" : 452,
+          "ref" : "http://foo/abcd#foo?bar",
+          "base" : "data:text/plain,baseURL",
+          "expectScheme" : "http:",
+          "expectHost" : "foo",
+          "expectPort" : "0",
+          "expectPath" : "/abcd",
+          "expectQuery" : "",
+          "expectFragment" : "#foo?bar"
+      },
+      {
+          "id" : 453,
+          "ref" : "[61:24:74]:98",
+          "base" : "data:text/plain,baseURL",
+          "expectScheme" : "data:",
+          "expectHost" : "",
+          "expectPort" : "0",
+          "expectPath" : "text/[61:24:74]:98",
+          "expectQuery" : "",
+          "expectFragment" : ""
+      },
+      {
+          "id" : 454,
+          "ref" : "http://[61:27]:98",
+          "base" : "data:text/plain,baseURL",
+          "expectScheme" : ":",
+          "expectHost" : "",
+          "expectPort" : "0",
+          "expectPath" : "",
+          "expectQuery" : "",
+          "expectFragment" : ""
+      },
+      {
+          "id" : 455,
+          "ref" : "http:[61:27]/:foo",
+          "base" : "data:text/plain,baseURL",
+          "expectScheme" : ":",
+          "expectHost" : "",
+          "expectPort" : "0",
+          "expectPath" : "",
+          "expectQuery" : "",
+          "expectFragment" : ""
+      },
+      {
+          "id" : 456,
+          "ref" : "http://[1::2]:3:4",
+          "base" : "data:text/plain,baseURL",
+          "expectScheme" : ":",
+          "expectHost" : "",
+          "expectPort" : "0",
+          "expectPath" : "",
+          "expectQuery" : "",
+          "expectFragment" : ""
+      },
+      {
+          "id" : 457,
+          "ref" : "http://2001::1",
+          "base" : "data:text/plain,baseURL",
+          "expectScheme" : ":",
+          "expectHost" : "",
+          "expectPort" : "0",
+          "expectPath" : "",
+          "expectQuery" : "",
+          "expectFragment" : ""
+      },
+      {
+          "id" : 458,
+          "ref" : "http://[2001::1",
+          "base" : "data:text/plain,baseURL",
+          "expectScheme" : ":",
+          "expectHost" : "",
+          "expectPort" : "0",
+          "expectPath" : "",
+          "expectQuery" : "",
+          "expectFragment" : ""
+      },
+      {
+          "id" : 459,
+          "ref" : "http://2001::1]",
+          "base" : "data:text/plain,baseURL",
+          "expectScheme" : ":",
+          "expectHost" : "",
+          "expectPort" : "0",
+          "expectPath" : "",
+          "expectQuery" : "",
+          "expectFragment" : ""
+      },
+      {
+          "id" : 460,
+          "ref" : "http://2001::1]:80",
+          "base" : "data:text/plain,baseURL",
+          "expectScheme" : ":",
+          "expectHost" : "",
+          "expectPort" : "0",
+          "expectPath" : "",
+          "expectQuery" : "",
+          "expectFragment" : ""
+      },
+      {
+          "id" : 461,
+          "ref" : "http://[2001::1]",
+          "base" : "data:text/plain,baseURL",
+          "expectScheme" : "http:",
+          "expectHost" : "[2001::1]",
+          "expectPort" : "0",
+          "expectPath" : "/",
+          "expectQuery" : "",
+          "expectFragment" : ""
+      },
+      {
+          "id" : 462,
+          "ref" : "http://[2001::1]:80",
+          "base" : "data:text/plain,baseURL",
+          "expectScheme" : "http:",
+          "expectHost" : "[2001::1]",
+          "expectPort" : "0",
+          "expectPath" : "/",
+          "expectQuery" : "",
+          "expectFragment" : ""
+      },
+      {
+          "id" : 463,
+          "ref" : "http://[[::]]",
+          "base" : "data:text/plain,baseURL",
+          "expectScheme" : ":",
+          "expectHost" : "",
+          "expectPort" : "0",
+          "expectPath" : "",
+          "expectQuery" : "",
+          "expectFragment" : ""
+      }
+    ]
+  },
+  "group" : {
+    "name" : "segments",
+    "link" : "http://trac.webkit.org/browser/trunk/LayoutTests/fast/url/script-tests/segments.js",
+    "test": [
+      {
+          "id" : 464,
+          "ref" : "http://user:pass@foo:21/bar;par?b#c",
+      "base" : "http://www.example.com/foo/bar",
+          "expectScheme" : "http:",
+          "expectHost" : "foo",
+          "expectPort" : "21",
+          "expectPath" : "/bar;par",
+          "expectQuery" : "?b",
+          "expectFragment" : "#c"
+      },
+      {
+          "id" : 465,
+          "ref" : "http:foo.com",
+      "base" : "http://www.example.com/foo/bar",
+          "expectScheme" : "http:",
+          "expectHost" : "example.org",
+          "expectPort" : "0",
+          "expectPath" : "/foo/foo.com",
+          "expectQuery" : "",
+          "expectFragment" : ""
+      },
+      {
+          "id" : 466,
+          "ref" : "\\t   :foo.com   \\n",
+      "base" : "http://www.example.com/foo/bar",
+          "expectScheme" : "http:",
+          "expectHost" : "example.org",
+          "expectPort" : "0",
+          "expectPath" : "/foo/:foo.com",
+          "expectQuery" : "",
+          "expectFragment" : ""
+      },
+      {
+          "id" : 467,
+          "ref" : " foo.com  ",
+      "base" : "http://www.example.com/foo/bar",
+          "expectScheme" : "http:",
+          "expectHost" : "example.org",
+          "expectPort" : "0",
+          "expectPath" : "/foo/foo.com",
+          "expectQuery" : "",
+          "expectFragment" : ""
+      },
+      {
+          "id" : 468,
+          "ref" : "a:\\t foo.com",
+      "base" : "http://www.example.com/foo/bar",
+          "expectScheme" : "a:",
+          "expectHost" : "",
+          "expectPort" : "0",
+          "expectPath" : " foo.com",
+          "expectQuery" : "",
+          "expectFragment" : ""
+      },
+      {
+          "id" : 469,
+          "ref" : "http://f:21/ b ? d # e ",
+      "base" : "http://www.example.com/foo/bar",
+          "expectScheme" : "http:",
+          "expectHost" : "f",
+          "expectPort" : "21",
+          "expectPath" : "/%20b%20",
+          "expectQuery" : "?%20d%20",
+          "expectFragment" : "# e"
+      },
+      {
+          "id" : 470,
+          "ref" : "http://f:/c",
+      "base" : "http://www.example.com/foo/bar",
+          "expectScheme" : "http:",
+          "expectHost" : "f",
+          "expectPort" : "0",
+          "expectPath" : "/c",
+          "expectQuery" : "",
+          "expectFragment" : ""
+      },
+      {
+          "id" : 471,
+          "ref" : "http://f:0/c",
+      "base" : "http://www.example.com/foo/bar",
+          "expectScheme" : "http:",
+          "expectHost" : "f",
+          "expectPort" : "0",
+          "expectPath" : "/c",
+          "expectQuery" : "",
+          "expectFragment" : ""
+      },
+      {
+          "id" : 472,
+          "ref" : "http://f:00000000000000/c",
+      "base" : "http://www.example.com/foo/bar",
+          "expectScheme" : "http:",
+          "expectHost" : "f",
+          "expectPort" : "0",
+          "expectPath" : "/c",
+          "expectQuery" : "",
+          "expectFragment" : ""
+      },
+      {
+          "id" : 473,
+          "ref" : "http://f:00000000000000000000080/c",
+      "base" : "http://www.example.com/foo/bar",
+          "expectScheme" : "http:",
+          "expectHost" : "f",
+          "expectPort" : "0",
+          "expectPath" : "/c",
+          "expectQuery" : "",
+          "expectFragment" : ""
+      },
+      {
+          "id" : 474,
+          "ref" : "http://f:b/c",
+      "base" : "http://www.example.com/foo/bar",
+          "expectScheme" : ":",
+          "expectHost" : "",
+          "expectPort" : "0",
+          "expectPath" : "",
+          "expectQuery" : "",
+          "expectFragment" : ""
+      },
+      {
+          "id" : 475,
+          "ref" : "http://f: /c",
+      "base" : "http://www.example.com/foo/bar",
+          "expectScheme" : ":",
+          "expectHost" : "",
+          "expectPort" : "0",
+          "expectPath" : "",
+          "expectQuery" : "",
+          "expectFragment" : ""
+      },
+      {
+          "id" : 476,
+          "ref" : "http://f:\\n/c",
+      "base" : "http://www.example.com/foo/bar",
+          "expectScheme" : ":",
+          "expectHost" : "",
+          "expectPort" : "0",
+          "expectPath" : "",
+          "expectQuery" : "",
+          "expectFragment" : ""
+      },
+      {
+          "id" : 477,
+          "ref" : "http://f:fifty-two/c",
+      "base" : "http://www.example.com/foo/bar",
+          "expectScheme" : ":",
+          "expectHost" : "",
+          "expectPort" : "0",
+          "expectPath" : "",
+          "expectQuery" : "",
+          "expectFragment" : ""
+      },
+      {
+          "id" : 478,
+          "ref" : "http://f:999999/c",
+      "base" : "http://www.example.com/foo/bar",
+          "expectScheme" : ":",
+          "expectHost" : "",
+          "expectPort" : "0",
+          "expectPath" : "",
+          "expectQuery" : "",
+          "expectFragment" : ""
+      },
+      {
+          "id" : 479,
+          "ref" : "http://f: 21 / b ? d # e ",
+      "base" : "http://www.example.com/foo/bar",
+          "expectScheme" : ":",
+          "expectHost" : "",
+          "expectPort" : "0",
+          "expectPath" : "",
+          "expectQuery" : "",
+          "expectFragment" : ""
+      },
+      {
+          "id" : 480,
+          "ref" : "",
+      "base" : "http://www.example.com/foo/bar",
+          "expectScheme" : "http:",
+          "expectHost" : "example.org",
+          "expectPort" : "0",
+          "expectPath" : "/foo/bar",
+          "expectQuery" : "",
+          "expectFragment" : ""
+      },
+      {
+          "id" : 481,
+          "ref" : "  \\t",
+      "base" : "http://www.example.com/foo/bar",
+          "expectScheme" : "http:",
+          "expectHost" : "example.org",
+          "expectPort" : "0",
+          "expectPath" : "/foo/bar",
+          "expectQuery" : "",
+          "expectFragment" : ""
+      },
+      {
+          "id" : 482,
+          "ref" : ":foo.com/",
+      "base" : "http://www.example.com/foo/bar",
+          "expectScheme" : "http:",
+          "expectHost" : "example.org",
+          "expectPort" : "0",
+          "expectPath" : "/foo/:foo.com/",
+          "expectQuery" : "",
+          "expectFragment" : ""
+      },
+      {
+          "id" : 483,
+          "ref" : ":foo.com\\\\",
+      "base" : "http://www.example.com/foo/bar",
+          "expectScheme" : "http:",
+          "expectHost" : "example.org",
+          "expectPort" : "0",
+          "expectPath" : "/foo/:foo.com/",
+          "expectQuery" : "",
+          "expectFragment" : ""
+      },
+      {
+          "id" : 484,
+          "ref" : ":",
+      "base" : "http://www.example.com/foo/bar",
+          "expectScheme" : "http:",
+          "expectHost" : "example.org",
+          "expectPort" : "0",
+          "expectPath" : "/foo/:",
+          "expectQuery" : "",
+          "expectFragment" : ""
+      },
+      {
+          "id" : 485,
+          "ref" : ":a",
+      "base" : "http://www.example.com/foo/bar",
+          "expectScheme" : "http:",
+          "expectHost" : "example.org",
+          "expectPort" : "0",
+          "expectPath" : "/foo/:a",
+          "expectQuery" : "",
+          "expectFragment" : ""
+      },
+      {
+          "id" : 486,
+          "ref" : ":/",
+      "base" : "http://www.example.com/foo/bar",
+          "expectScheme" : "http:",
+          "expectHost" : "example.org",
+          "expectPort" : "0",
+          "expectPath" : "/foo/:/",
+          "expectQuery" : "",
+          "expectFragment" : ""
+      },
+      {
+          "id" : 487,
+          "ref" : ":\\\\",
+      "base" : "http://www.example.com/foo/bar",
+          "expectScheme" : "http:",
+          "expectHost" : "example.org",
+          "expectPort" : "0",
+          "expectPath" : "/foo/:/",
+          "expectQuery" : "",
+          "expectFragment" : ""
+      },
+      {
+          "id" : 488,
+          "ref" : ":#",
+      "base" : "http://www.example.com/foo/bar",
+          "expectScheme" : "http:",
+          "expectHost" : "example.org",
+          "expectPort" : "0",
+          "expectPath" : "/foo/:",
+          "expectQuery" : "",
+          "expectFragment" : ""
+      },
+      {
+          "id" : 489,
+          "ref" : "#",
+      "base" : "http://www.example.com/foo/bar",
+          "expectScheme" : "http:",
+          "expectHost" : "example.org",
+          "expectPort" : "0",
+          "expectPath" : "/foo/bar",
+          "expectQuery" : "",
+          "expectFragment" : ""
+      },
+      {
+          "id" : 490,
+          "ref" : "#/",
+      "base" : "http://www.example.com/foo/bar",
+          "expectScheme" : "http:",
+          "expectHost" : "example.org",
+          "expectPort" : "0",
+          "expectPath" : "/foo/bar",
+          "expectQuery" : "",
+          "expectFragment" : "#/"
+      },
+      {
+          "id" : 491,
+          "ref" : "#\\\\",
+      "base" : "http://www.example.com/foo/bar",
+          "expectScheme" : "http:",
+          "expectHost" : "example.org",
+          "expectPort" : "0",
+          "expectPath" : "/foo/bar",
+          "expectQuery" : "",
+          "expectFragment" : "#\\\\"
+      },
+      {
+          "id" : 492,
+          "ref" : "#;?",
+      "base" : "http://www.example.com/foo/bar",
+          "expectScheme" : "http:",
+          "expectHost" : "example.org",
+          "expectPort" : "0",
+          "expectPath" : "/foo/bar",
+          "expectQuery" : "",
+          "expectFragment" : "#;?"
+      },
+      {
+          "id" : 493,
+          "ref" : "?",
+      "base" : "http://www.example.com/foo/bar",
+          "expectScheme" : "http:",
+          "expectHost" : "example.org",
+          "expectPort" : "0",
+          "expectPath" : "/foo/bar",
+          "expectQuery" : "",
+          "expectFragment" : ""
+      },
+      {
+          "id" : 494,
+          "ref" : "/",
+      "base" : "http://www.example.com/foo/bar",
+          "expectScheme" : "http:",
+          "expectHost" : "example.org",
+          "expectPort" : "0",
+          "expectPath" : "/",
+          "expectQuery" : "",
+          "expectFragment" : ""
+      },
+      {
+          "id" : 495,
+          "ref" : ":23",
+      "base" : "http://www.example.com/foo/bar",
+          "expectScheme" : "http:",
+          "expectHost" : "example.org",
+          "expectPort" : "0",
+          "expectPath" : "/foo/:23",
+          "expectQuery" : "",
+          "expectFragment" : ""
+      },
+      {
+          "id" : 496,
+          "ref" : "/:23",
+      "base" : "http://www.example.com/foo/bar",
+          "expectScheme" : "http:",
+          "expectHost" : "example.org",
+          "expectPort" : "0",
+          "expectPath" : "/:23",
+          "expectQuery" : "",
+          "expectFragment" : ""
+      },
+      {
+          "id" : 497,
+          "ref" : "//",
+      "base" : "http://www.example.com/foo/bar",
+          "expectScheme" : ":",
+          "expectHost" : "",
+          "expectPort" : "0",
+          "expectPath" : "",
+          "expectQuery" : "",
+          "expectFragment" : ""
+      },
+      {
+          "id" : 498,
+          "ref" : "::",
+      "base" : "http://www.example.com/foo/bar",
+          "expectScheme" : "http:",
+          "expectHost" : "example.org",
+          "expectPort" : "0",
+          "expectPath" : "/foo/::",
+          "expectQuery" : "",
+          "expectFragment" : ""
+      },
+      {
+          "id" : 499,
+          "ref" : "::23",
+      "base" : "http://www.example.com/foo/bar",
+          "expectScheme" : "http:",
+          "expectHost" : "example.org",
+          "expectPort" : "0",
+          "expectPath" : "/foo/::23",
+          "expectQuery" : "",
+          "expectFragment" : ""
+      },
+      {
+          "id" : 500,
+          "ref" : "foo://",
+      "base" : "http://www.example.com/foo/bar",
+          "expectScheme" : "foo:",
+          "expectHost" : "",
+          "expectPort" : "0",
+          "expectPath" : "//",
+          "expectQuery" : "",
+          "expectFragment" : ""
+      },
+      {
+          "id" : 501,
+          "ref" : "http://a:b@c:29/d",
+      "base" : "http://www.example.com/foo/bar",
+          "expectScheme" : "http:",
+          "expectHost" : "c",
+          "expectPort" : "29",
+          "expectPath" : "/d",
+          "expectQuery" : "",
+          "expectFragment" : ""
+      },
+      {
+          "id" : 502,
+          "ref" : "http::@c:29",
+      "base" : "http://www.example.com/foo/bar",
+          "expectScheme" : "http:",
+          "expectHost" : "example.org",
+          "expectPort" : "0",
+          "expectPath" : "/foo/:@c:29",
+          "expectQuery" : "",
+          "expectFragment" : ""
+      },
+      {
+          "id" : 503,
+          "ref" : "http://&a:foo(b]c@d:2/",
+      "base" : "http://www.example.com/foo/bar",
+          "expectScheme" : "http:",
+          "expectHost" : "d",
+          "expectPort" : "2",
+          "expectPath" : "/",
+          "expectQuery" : "",
+          "expectFragment" : ""
+      },
+      {
+          "id" : 504,
+          "ref" : "http://::@c@d:2",
+      "base" : "http://www.example.com/foo/bar",
+          "expectScheme" : "http:",
+          "expectHost" : "d",
+          "expectPort" : "2",
+          "expectPath" : "/",
+          "expectQuery" : "",
+          "expectFragment" : ""
+      },
+      {
+          "id" : 505,
+          "ref" : "http://foo.com:b@d/",
+      "base" : "http://www.example.com/foo/bar",
+          "expectScheme" : "http:",
+          "expectHost" : "d",
+          "expectPort" : "0",
+          "expectPath" : "/",
+          "expectQuery" : "",
+          "expectFragment" : ""
+      },
+      {
+          "id" : 506,
+          "ref" : "http://foo.com/\\\\@",
+      "base" : "http://www.example.com/foo/bar",
+          "expectScheme" : "http:",
+          "expectHost" : "foo.com",
+          "expectPort" : "0",
+          "expectPath" : "//@",
+          "expectQuery" : "",
+          "expectFragment" : ""
+      },
+      {
+          "id" : 507,
+          "ref" : "http:\\\\\\\\foo.com\\\\",
+      "base" : "http://www.example.com/foo/bar",
+          "expectScheme" : "http:",
+          "expectHost" : "foo.com",
+          "expectPort" : "0",
+          "expectPath" : "/",
+          "expectQuery" : "",
+          "expectFragment" : ""
+      },
+      {
+          "id" : 508,
+          "ref" : "http:\\\\\\\\a\\\\b:c\\\\d@foo.com\\\\",
+      "base" : "http://www.example.com/foo/bar",
+          "expectScheme" : "http:",
+          "expectHost" : "a",
+          "expectPort" : "0",
+          "expectPath" : "/b:c/d@foo.com/",
+          "expectQuery" : "",
+          "expectFragment" : ""
+      },
+      {
+          "id" : 509,
+          "ref" : "foo:/",
+      "base" : "http://www.example.com/foo/bar",
+          "expectScheme" : "foo:",
+          "expectHost" : "",
+          "expectPort" : "0",
+          "expectPath" : "/",
+          "expectQuery" : "",
+          "expectFragment" : ""
+      },
+      {
+          "id" : 510,
+          "ref" : "foo:/bar.com/",
+      "base" : "http://www.example.com/foo/bar",
+          "expectScheme" : "foo:",
+          "expectHost" : "",
+          "expectPort" : "0",
+          "expectPath" : "/bar.com/",
+          "expectQuery" : "",
+          "expectFragment" : ""
+      },
+      {
+          "id" : 511,
+          "ref" : "foo://///////",
+      "base" : "http://www.example.com/foo/bar",
+          "expectScheme" : "foo:",
+          "expectHost" : "",
+          "expectPort" : "0",
+          "expectPath" : "/////////",
+          "expectQuery" : "",
+          "expectFragment" : ""
+      },
+      {
+          "id" : 512,
+          "ref" : "foo://///////bar.com/",
+      "base" : "http://www.example.com/foo/bar",
+          "expectScheme" : "foo:",
+          "expectHost" : "",
+          "expectPort" : "0",
+          "expectPath" : "/////////bar.com/",
+          "expectQuery" : "",
+          "expectFragment" : ""
+      },
+      {
+          "id" : 513,
+          "ref" : "foo:////://///",
+      "base" : "http://www.example.com/foo/bar",
+          "expectScheme" : "foo:",
+          "expectHost" : "",
+          "expectPort" : "0",
+          "expectPath" : "////://///",
+          "expectQuery" : "",
+          "expectFragment" : ""
+      },
+      {
+          "id" : 514,
+          "ref" : "c:/foo",
+      "base" : "http://www.example.com/foo/bar",
+          "expectScheme" : "c:",
+          "expectHost" : "",
+          "expectPort" : "0",
+          "expectPath" : "/foo",
+          "expectQuery" : "",
+          "expectFragment" : ""
+      },
+      {
+          "id" : 515,
+          "ref" : "//foo/bar",
+      "base" : "http://www.example.com/foo/bar",
+          "expectScheme" : "http:",
+          "expectHost" : "foo",
+          "expectPort" : "0",
+          "expectPath" : "/bar",
+          "expectQuery" : "",
+          "expectFragment" : ""
+      },
+      {
+          "id" : 516,
+          "ref" : "http://foo/path;a??e#f#g",
+      "base" : "http://www.example.com/foo/bar",
+          "expectScheme" : "http:",
+          "expectHost" : "foo",
+          "expectPort" : "0",
+          "expectPath" : "/path;a",
+          "expectQuery" : "??e",
+          "expectFragment" : "#f#g"
+      },
+      {
+          "id" : 517,
+          "ref" : "http://foo/abcd?efgh?ijkl",
+      "base" : "http://www.example.com/foo/bar",
+          "expectScheme" : "http:",
+          "expectHost" : "foo",
+          "expectPort" : "0",
+          "expectPath" : "/abcd",
+          "expectQuery" : "?efgh?ijkl",
+          "expectFragment" : ""
+      },
+      {
+          "id" : 518,
+          "ref" : "http://foo/abcd#foo?bar",
+      "base" : "http://www.example.com/foo/bar",
+          "expectScheme" : "http:",
+          "expectHost" : "foo",
+          "expectPort" : "0",
+          "expectPath" : "/abcd",
+          "expectQuery" : "",
+          "expectFragment" : "#foo?bar"
+      },
+      {
+          "id" : 519,
+          "ref" : "[61:24:74]:98",
+      "base" : "http://www.example.com/foo/bar",
+          "expectScheme" : "http:",
+          "expectHost" : "example.org",
+          "expectPort" : "0",
+          "expectPath" : "/foo/[61:24:74]:98",
+          "expectQuery" : "",
+          "expectFragment" : ""
+      },
+      {
+          "id" : 520,
+          "ref" : "http://[61:27]:98",
+      "base" : "http://www.example.com/foo/bar",
+          "expectScheme" : ":",
+          "expectHost" : "",
+          "expectPort" : "0",
+          "expectPath" : "",
+          "expectQuery" : "",
+          "expectFragment" : ""
+      },
+      {
+          "id" : 521,
+          "ref" : "http:[61:27]/:foo",
+      "base" : "http://www.example.com/foo/bar",
+          "expectScheme" : "http:",
+          "expectHost" : "example.org",
+          "expectPort" : "0",
+          "expectPath" : "/foo/[61:27]/:foo",
+          "expectQuery" : "",
+          "expectFragment" : ""
+      },
+      {
+          "id" : 522,
+          "ref" : "http://[1::2]:3:4",
+      "base" : "http://www.example.com/foo/bar",
+          "expectScheme" : ":",
+          "expectHost" : "",
+          "expectPort" : "0",
+          "expectPath" : "",
+          "expectQuery" : "",
+          "expectFragment" : ""
+      },
+      {
+          "id" : 523,
+          "ref" : "http://2001::1",
+      "base" : "http://www.example.com/foo/bar",
+          "expectScheme" : ":",
+          "expectHost" : "",
+          "expectPort" : "0",
+          "expectPath" : "",
+          "expectQuery" : "",
+          "expectFragment" : ""
+      },
+      {
+          "id" : 524,
+          "ref" : "http://[2001::1",
+      "base" : "http://www.example.com/foo/bar",
+          "expectScheme" : ":",
+          "expectHost" : "",
+          "expectPort" : "0",
+          "expectPath" : "",
+          "expectQuery" : "",
+          "expectFragment" : ""
+      },
+      {
+          "id" : 525,
+          "ref" : "http://2001::1]",
+      "base" : "http://www.example.com/foo/bar",
+          "expectScheme" : ":",
+          "expectHost" : "",
+          "expectPort" : "0",
+          "expectPath" : "",
+          "expectQuery" : "",
+          "expectFragment" : ""
+      },
+      {
+          "id" : 526,
+          "ref" : "http://2001::1]:80",
+      "base" : "http://www.example.com/foo/bar",
+          "expectScheme" : ":",
+          "expectHost" : "",
+          "expectPort" : "0",
+          "expectPath" : "",
+          "expectQuery" : "",
+          "expectFragment" : ""
+      },
+      {
+          "id" : 527,
+          "ref" : "http://[2001::1]",
+      "base" : "http://www.example.com/foo/bar",
+          "expectScheme" : "http:",
+          "expectHost" : "[2001::1]",
+          "expectPort" : "0",
+          "expectPath" : "/",
+          "expectQuery" : "",
+          "expectFragment" : ""
+      },
+      {
+          "id" : 528,
+          "ref" : "http://[2001::1]:80",
+      "base" : "http://www.example.com/foo/bar",
+          "expectScheme" : "http:",
+          "expectHost" : "[2001::1]",
+          "expectPort" : "0",
+          "expectPath" : "/",
+          "expectQuery" : "",
+          "expectFragment" : ""
+      },
+      {
+          "id" : 529,
+          "ref" : "http://[[::]]",
+      "base" : "http://www.example.com/foo/bar",
+          "expectScheme" : ":",
+          "expectHost" : "",
+          "expectPort" : "0",
+          "expectPath" : "",
+          "expectQuery" : "",
+          "expectFragment" : ""
+      }
+    ]
+  },
+  "group" : {
+    "name" : "standard-url",
+    "link" : "http://trac.webkit.org/browser/trunk/LayoutTests/fast/url/script-tests/standard-url.js",
+    "test": [
+      {
+      "id" : 530,
+      "ref" : "http://www.google.com/foo?bar=baz#",
+      "expectRef" : "http://www.google.com/foo?bar=baz#"
+      },
+      {
+      "id" : 531,
+      "ref" : "http://[www.google.com]/",
+      "expectRef" : "http://[www.google.com]/"
+      },
+      {
+      "id" : 532,
+      "ref" : "http:////////user:@google.com:99?foo",
+      "expectRef" : "http://user@google.com:99/?foo"
+      },
+      {
+      "id" : 533,
+      "ref" : "http://192.0x00A80001",
+      "expectRef" : "http://192.168.0.1/"
+      },
+      {
+      "id" : 534,
+      "ref" : "http://www/foo%2Ehtml",
+      "expectRef" : "http://www/foo.html"
+      },
+      {
+      "id" : 535,
+      "ref" : "http://user:pass@/",
+      "expectRef" : "http://user:pass@/"
+      },
+      {
+      "id" : 536,
+      "ref" : "http://%25DOMAIN:foobar@foodomain.com/",
+      "expectRef" : "http://%25DOMAIN:foobar@foodomain.com/"
+      },
+      {
+      "id" : 537,
+      "ref" : "http:\\\\\\\\www.google.com\\\\foo",
+      "expectRef" : "http://www.google.com/foo"
+      },
+      {
+      "id" : 538,
+      "ref" : "http://www.google.com/asdf#\\ud800",
+      "expectRef" : "http://www.google.com/asdf#\\uFFFD"
+      },
+      {
+      "id" : 539,
+      "ref" : "http://foo:80/",
+      "expectRef" : "http://foo/"
+      },
+      {
+      "id" : 540,
+      "ref" : "http://foo:81/",
+      "expectRef" : "http://foo:81/"
+      },
+      {
+      "id" : 541,
+      "ref" : "httpa://foo:80/",
+      "expectRef" : "httpa://foo:80/"
+      },
+      {
+      "id" : 542,
+      "ref" : "http://foo:-80/",
+      "expectRef" : "http://foo:-80/"
+      },
+      {
+      "id" : 543,
+      "ref" : "https://foo:443/",
+      "expectRef" : "https://foo/"
+      },
+      {
+      "id" : 544,
+      "ref" : "https://foo:80/",
+      "expectRef" : "https://foo:80/"
+      },
+      {
+      "id" : 545,
+      "ref" : "ftp://foo:21/",
+      "expectRef" : "ftp://foo/"
+      },
+      {
+      "id" : 546,
+      "ref" : "ftp://foo:80/",
+      "expectRef" : "ftp://foo:80/"
+      },
+      {
+      "id" : 547,
+      "ref" : "gopher://foo:70/",
+      "expectRef" : "gopher://foo/"
+      },
+      {
+      "id" : 548,
+      "ref" : "gopher://foo:443/",
+      "expectRef" : "gopher://foo:443/"
+      },
+      {
+      "id" : 549,
+      "ref" : "ws://foo:80/",
+      "expectRef" : "ws://foo/"
+      },
+      {
+      "id" : 550,
+      "ref" : "ws://foo:81/",
+      "expectRef" : "ws://foo:81/"
+      },
+      {
+      "id" : 551,
+      "ref" : "ws://foo:443/",
+      "expectRef" : "ws://foo:443/"
+      },
+      {
+      "id" : 552,
+      "ref" : "ws://foo:815/",
+      "expectRef" : "ws://foo:815/"
+      },
+      {
+      "id" : 553,
+      "ref" : "wss://foo:80/",
+      "expectRef" : "wss://foo:80/"
+      },
+      {
+      "id" : 554,
+      "ref" : "wss://foo:81/",
+      "expectRef" : "wss://foo:81/"
+      },
+      {
+      "id" : 555,
+      "ref" : "wss://foo:443/",
+      "expectRef" : "wss://foo/"
+      },
+      {
+      "id" : 556,
+      "ref" : "wss://foo:815/",
+      "expectRef" : "wss://foo:815/"
+      }
+    ]
+  },
+  "group" : {
+    "name" : "trivial-segments",
+    "link" : "http://trac.webkit.org/browser/trunk/LayoutTests/fast/url/script-tests/trivial-segments.js",
+    "test": [
+      {
+          "id" : 557,
+          "ref" : "http://example.com/",
+          "base" : "http://example.org/foo/bar",
+          "expectScheme" : "http:",
+          "expectHost" : "example.com",
+          "expectPort" : "0",
+          "expectPath" : "/",
+          "expectQuery" : "",
+          "expectFragment" : ""
+      }
+    ]
+  },
+  "group" : {
+    "name" : "trivial",
+    "link" : "http://trac.webkit.org/browser/trunk/LayoutTests/fast/url/script-tests/trivial.js",
+    "test": [
+      {
+      "id" : 558,
+          "base" : "http://example.org/foo/bar",
+      "ref" : "http://example.com/",
+      "expectRef" : "http://example.com/"
+      },
+      {
+      "id" : 559,
+          "base" : "http://example.org/foo/bar",
+      "ref" : "/",
+      "expectRef" : "http://example.org/"
+      }
+    ]
+  }
+}
+]
